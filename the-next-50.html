@@ -1,0 +1,2363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Next 50</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: #fafafa;
+            min-height: 100vh;
+            color: #1d1d1f;
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        .nav-bar {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: saturate(180%) blur(20px);
+            padding: 14px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0,0,0,0.08);
+        }
+        
+        .nav-content {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+        
+        .nav-bar h1 {
+            color: #1d1d1f;
+            font-size: 19px;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+        }
+        
+        .nav-buttons {
+            display: flex;
+            gap: 2px;
+            flex-wrap: wrap;
+        }
+        
+        .nav-btn {
+            padding: 7px 14px;
+            background: transparent;
+            color: #6e6e73;
+            border: none;
+            border-radius: 18px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 400;
+            transition: all 0.15s ease;
+            letter-spacing: -0.01em;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .nav-btn:hover {
+            background: rgba(0,0,0,0.04);
+            color: #1d1d1f;
+        }
+        
+        .nav-btn.active {
+            background: #059669;
+            color: white;
+        }
+        
+        .nav-icon {
+            font-size: 16px;
+        }
+        
+        .container {
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 44px 24px;
+        }
+        
+        .section {
+            display: none;
+        }
+        
+        .section.active {
+            display: block;
+            animation: fadeIn 0.35s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .back-to-home {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 0;
+            background: transparent;
+            color: #059669;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 400;
+            margin-bottom: 28px;
+            transition: opacity 0.15s ease;
+        }
+        
+        .back-to-home:hover {
+            opacity: 0.65;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 18px;
+            padding: 38px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+        }
+        
+        .hero-card {
+            background: linear-gradient(135deg, #047857 0%, #059669 100%);
+            color: white;
+            text-align: center;
+            padding: 56px 40px;
+        }
+        
+        .hero-card h1 {
+            font-size: 52px;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            margin-bottom: 14px;
+            color: white;
+        }
+        
+        .hero-card .subtitle {
+            font-size: 19px;
+            opacity: 0.92;
+            font-weight: 400;
+            margin-bottom: 36px;
+            color: white;
+            letter-spacing: -0.01em;
+        }
+        
+        .countdown-card {
+            background: rgba(255,255,255,0.14);
+            backdrop-filter: blur(20px);
+            padding: 32px;
+            border-radius: 14px;
+            margin-top: 28px;
+        }
+        
+        .countdown-card h2 {
+            font-size: 16px;
+            font-weight: 500;
+            margin-bottom: 10px;
+            opacity: 0.88;
+            color: white;
+            letter-spacing: -0.01em;
+        }
+        
+        .countdown-date {
+            font-size: 42px;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            margin: 10px 0;
+            color: white;
+        }
+        
+        h2 {
+            color: #1d1d1f;
+            font-size: 32px;
+            font-weight: 700;
+            letter-spacing: -0.025em;
+            margin-bottom: 28px;
+        }
+        
+        h3 {
+            color: #1d1d1f;
+            font-size: 22px;
+            font-weight: 600;
+            letter-spacing: -0.015em;
+            margin: 36px 0 18px 0;
+        }
+        
+        h4 {
+            color: #1d1d1f;
+            font-size: 16px;
+            font-weight: 600;
+            margin: 22px 0 10px 0;
+            letter-spacing: -0.01em;
+        }
+        
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+            gap: 14px;
+            margin: 28px 0;
+        }
+        
+        .stat-box {
+            background: #f9fafb;
+            padding: 30px 22px;
+            border-radius: 14px;
+            text-align: center;
+            transition: all 0.2s ease;
+            border: 1px solid #f0f0f0;
+        }
+        
+        .stat-box:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+        }
+        
+        .stat-number {
+            font-size: 44px;
+            font-weight: 700;
+            color: #059669;
+            letter-spacing: -0.03em;
+            margin-bottom: 6px;
+        }
+        
+        .stat-label {
+            font-size: 12px;
+            color: #86868b;
+            line-height: 1.4;
+            letter-spacing: -0.005em;
+        }
+        
+        .info-section {
+            background: #f9fafb;
+            padding: 28px;
+            border-radius: 14px;
+            margin: 20px 0;
+        }
+        
+        .info-section.success {
+            background: #f0fdf4;
+            border: 1px solid #d1fae5;
+        }
+        
+        .info-section.warning {
+            background: #fef2f2;
+            border: 1px solid #fecaca;
+        }
+        
+        .info-section.highlight {
+            background: #fffbeb;
+            border: 1px solid #fde68a;
+        }
+        
+        .metric-card {
+            background: #f9fafb;
+            padding: 22px;
+            border-radius: 12px;
+            margin: 14px 0;
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 16px;
+            color: white;
+            font-weight: 500;
+            font-size: 12px;
+            margin: 10px 0;
+            letter-spacing: -0.005em;
+        }
+        
+        .badge-excellent {
+            background: #047857;
+        }
+        
+        .badge-good {
+            background: #059669;
+        }
+        
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+            gap: 14px;
+            margin: 28px 0;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin: 28px 0;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 1px 6px rgba(0,0,0,0.04);
+        }
+        
+        th {
+            background: #f9fafb;
+            color: #6e6e73;
+            padding: 14px;
+            text-align: left;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        td {
+            padding: 14px;
+            border-top: 1px solid #f5f5f7;
+            font-size: 14px;
+        }
+        
+        tr:hover {
+            background: #fafafa;
+        }
+        
+        ul, ol {
+            margin: 14px 0;
+            padding-left: 22px;
+            line-height: 1.7;
+        }
+        
+        li {
+            margin: 9px 0;
+            color: #1d1d1f;
+        }
+        
+        .timeline-item {
+            display: flex;
+            align-items: flex-start;
+            padding: 22px;
+            margin-bottom: 10px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 1px 6px rgba(0,0,0,0.04);
+        }
+        
+        .timeline-date {
+            font-weight: 600;
+            color: #059669;
+            min-width: 170px;
+            flex-shrink: 0;
+            font-size: 14px;
+            letter-spacing: -0.01em;
+        }
+        
+        .timeline-content {
+            flex: 1;
+            color: #1d1d1f;
+            font-size: 14px;
+        }
+        
+        .timeline-item.current {
+            background: #fffbeb;
+        }
+        
+        .timeline-item.current .timeline-date {
+            color: #d97706;
+        }
+        
+        .timeline-item.birthday {
+            background: #fef2f2;
+        }
+        
+        .timeline-item.birthday .timeline-date {
+            color: #dc2626;
+        }
+        
+        .exercise-demo {
+            background: #1d1d1f;
+            color: #d1d5db;
+            padding: 22px;
+            border-radius: 12px;
+            margin: 18px 0;
+            font-family: 'SF Mono', 'Monaco', 'Courier New', monospace;
+            font-size: 12px;
+            text-align: center;
+            white-space: pre-line;
+            overflow-x: auto;
+        }
+        
+        p {
+            color: #6e6e73;
+            font-size: 14px;
+            line-height: 1.6;
+            letter-spacing: -0.005em;
+        }
+        
+        strong {
+            color: #1d1d1f;
+            font-weight: 600;
+        }
+        
+        .phase-indicators {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 10px;
+            margin: 28px 0;
+        }
+        
+        .weekly-tracker {
+            background: white;
+            padding: 24px;
+            border-radius: 12px;
+            margin: 16px 0;
+            box-shadow: 0 1px 6px rgba(0,0,0,0.04);
+        }
+        
+        .week-header {
+            background: #f9fafb;
+            padding: 12px 16px;
+            border-radius: 8px;
+            margin-bottom: 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .week-title {
+            font-size: 15px;
+            font-weight: 600;
+            color: #1d1d1f;
+        }
+        
+        .week-dates {
+            font-size: 13px;
+            color: #6e6e73;
+        }
+        
+        .tracker-input {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 12px;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #f5f5f7;
+        }
+        
+        .tracker-input:last-child {
+            border-bottom: none;
+        }
+        
+        .tracker-label {
+            font-size: 14px;
+            color: #1d1d1f;
+        }
+        
+        .tracker-value {
+            width: 80px;
+            padding: 6px 10px;
+            border: 1px solid #e5e7eb;
+            border-radius: 6px;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .tracker-value:focus {
+            outline: none;
+            border-color: #059669;
+        }
+        
+        /* TODAY TRACKER STYLES */
+        .today-tracker {
+            background: linear-gradient(135deg, #059669 0%, #047857 100%);
+            color: white;
+            padding: 28px;
+            border-radius: 14px;
+            margin-bottom: 20px;
+        }
+        
+        .today-date {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 18px;
+            opacity: 0.95;
+        }
+        
+        .daily-check {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px;
+            background: rgba(255,255,255,0.12);
+            border-radius: 10px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .daily-check:hover {
+            background: rgba(255,255,255,0.18);
+        }
+        
+        .daily-check input[type="checkbox"] {
+            width: 22px;
+            height: 22px;
+            cursor: pointer;
+        }
+        
+        .daily-check label {
+            cursor: pointer;
+            font-size: 15px;
+            flex: 1;
+            color: white;
+            font-weight: 500;
+        }
+        
+        /* WEEK TRACKER STYLES */
+        .week-tracker {
+            background: white;
+            padding: 28px;
+            border-radius: 14px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+        }
+        
+        .day-row {
+            padding: 16px;
+            border-bottom: 1px solid #f5f5f7;
+        }
+        
+        .day-row:last-child {
+            border-bottom: none;
+        }
+        
+        .day-name {
+            font-size: 14px;
+            font-weight: 600;
+            color: #1d1d1f;
+            margin-bottom: 10px;
+        }
+        
+        .day-checks {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 8px;
+        }
+        
+        .day-check {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .day-check input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+        
+        .day-check label {
+            cursor: pointer;
+            font-size: 13px;
+            color: #6e6e73;
+        }
+        
+        .week-summary {
+            background: #f0fdf4;
+            border: 1px solid #d1fae5;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        
+        .summary-title {
+            font-size: 15px;
+            font-weight: 600;
+            color: #047857;
+            margin-bottom: 12px;
+        }
+        
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+        
+        .summary-item {
+            font-size: 13px;
+            color: #1d1d1f;
+        }
+        
+        .summary-value {
+            font-weight: 600;
+            color: #059669;
+        }
+        
+        .friday-metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 12px;
+            padding-top: 12px;
+            border-top: 1px solid #d1fae5;
+        }
+        
+        .metric-input {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+        
+        .metric-label {
+            font-size: 12px;
+            color: #6e6e73;
+            font-weight: 500;
+        }
+        
+        .metric-value {
+            padding: 6px 10px;
+            border: 1px solid #d1fae5;
+            border-radius: 6px;
+            font-size: 14px;
+            background: white;
+        }
+        
+        /* PROGRESS COUNTERS */
+        .progress-counters-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 14px;
+            margin-bottom: 20px;
+        }
+        
+        .progress-counter-card {
+            background: white;
+            padding: 24px;
+            border-radius: 14px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+        }
+        
+        .progress-counter-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #1d1d1f;
+            margin-bottom: 6px;
+        }
+        
+        .progress-counter-subtitle {
+            font-size: 12px;
+            color: #6e6e73;
+            margin-bottom: 16px;
+        }
+        
+        .progress-stat {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #f5f5f7;
+            font-size: 14px;
+        }
+        
+        .progress-stat:last-child {
+            border-bottom: none;
+        }
+        
+        .progress-stat-label {
+            color: #6e6e73;
+        }
+        
+        .progress-stat-value {
+            font-weight: 600;
+            color: #059669;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-content {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .nav-bar h1 {
+                font-size: 17px;
+                text-align: center;
+            }
+            
+            .nav-buttons {
+                justify-content: center;
+            }
+            
+            .nav-btn {
+                flex: 1;
+                min-width: 58px;
+                padding: 6px 10px;
+                font-size: 12px;
+            }
+            
+            .hero-card h1 {
+                font-size: 36px;
+            }
+            
+            .hero-card .subtitle {
+                font-size: 17px;
+            }
+            
+            .countdown-date {
+                font-size: 32px;
+            }
+            
+            .container {
+                padding: 32px 18px;
+            }
+            
+            .card {
+                padding: 26px;
+            }
+            
+            h2 {
+                font-size: 26px;
+            }
+            
+            .timeline-item {
+                flex-direction: column;
+            }
+            
+            .timeline-date {
+                margin-bottom: 6px;
+            }
+            
+            .phase-indicators {
+                grid-template-columns: repeat(2, 1fr) !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="nav-bar">
+        <div class="nav-content">
+            <h1>The Next 50</h1>
+            <div class="nav-buttons">
+                <button class="nav-btn active" onclick="showSection('home')">
+                    <span class="nav-icon">🏠</span> Home
+                </button>
+                <button class="nav-btn" onclick="showSection('tracker')">
+                    <span class="nav-icon">📊</span> Tracker
+                </button>
+                <button class="nav-btn" onclick="showSection('checklist')">
+                    <span class="nav-icon">✓</span> Checklist
+                </button>
+                <button class="nav-btn" onclick="showSection('workout')">
+                    <span class="nav-icon">🤍</span> Workout
+                </button>
+                <button class="nav-btn" onclick="showSection('form')">
+                    <span class="nav-icon">📖</span> Form
+                </button>
+                <button class="nav-btn" onclick="showSection('meals')">
+                    <span class="nav-icon">🥗</span> Meals
+                </button>
+                <button class="nav-btn" onclick="resetAllData()" style="margin-left: auto; background: #fef2f2; color: #dc2626;">
+                    <span class="nav-icon">⟲</span> Reset
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- HOME -->
+        <div id="home" class="section active">
+            <div class="card hero-card">
+                <h1>The Next 50</h1>
+                <p class="subtitle">Alejandra's Complete Health Command Center</p>
+                
+                <div class="countdown-card">
+                    <h2>Countdown to My 50th Birthday</h2>
+                    <p class="countdown-date">December 28, 2026</p>
+                    <p style="margin-top: 12px; font-size: 14px; opacity: 0.88; color: white;">Building the foundation for the next 50 years</p>
+                </div>
+            </div>
+
+            <!-- TODAY TRACKER -->
+            <div class="card today-tracker">
+                <div class="today-date" id="todayDate">TODAY: Loading...</div>
+                
+                <div class="daily-check">
+                    <input type="checkbox" id="today-workout" onchange="toggleCheck('today-workout')">
+                    <label for="today-workout">Morning 7 workout</label>
+                </div>
+                
+                <div class="daily-check">
+                    <input type="checkbox" id="today-protein" onchange="toggleCheck('today-protein')">
+                    <label for="today-protein">Protein at every meal</label>
+                </div>
+                
+                <div class="daily-check">
+                    <input type="checkbox" id="today-clean" onchange="toggleCheck('today-clean')">
+                    <label for="today-clean">Zero family foods</label>
+                </div>
+            </div>
+
+            <!-- PREVIOUS WEEK -->
+            <div id="previousWeekTracker"></div>
+
+            <!-- CURRENT WEEK TRACKER -->
+            <div id="currentWeekTracker"></div>
+
+            <!-- PROGRESS COUNTERS -->
+            <div id="progressCounters"></div>
+
+            <div class="card">
+                <h2>Current Baseline</h2>
+                <p style="margin-bottom: 28px;">November 24, 2025</p>
+                
+                <div class="stat-grid">
+                    <div class="stat-box">
+                        <div class="stat-number">27.7%</div>
+                        <div class="stat-label">Body Fat<br>Above Average</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">0.31</div>
+                        <div class="stat-label">Visceral Fat (lbs)<br>Excellent</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">0.9</div>
+                        <div class="stat-label">Bone Density<br>Top 80%</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">101.8</div>
+                        <div class="stat-label">Lean Mass (lbs)<br>Strong Base</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>My Journey to 50</h2>
+                
+                <div class="timeline-item current">
+                    <div class="timeline-date">Nov 24, 2025</div>
+                    <div class="timeline-content">
+                        <strong>Scan #1 — Baseline</strong><br>
+                        Starting point: 27.7% body fat, 101.8 lbs lean mass, excellent visceral fat & bone density
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">Jan–Apr 2026</div>
+                    <div class="timeline-content">
+                        <strong>Q1: Foundation Phase</strong><br>
+                        Build strength, master routine, establish "My Foods" boundaries
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">End of April 2026</div>
+                    <div class="timeline-content">
+                        <strong>Scan #2 — 5 Months</strong><br>
+                        Target: 25.5-26% body fat (↓1.7-2.2%), 102-103 lbs lean mass (↑0.2-1.2 lbs)
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">May–Aug 2026</div>
+                    <div class="timeline-content">
+                        <strong>Q2: Building Phase</strong><br>
+                        Increase intensity, progressive overload, continue body recomposition
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">End of August 2026</div>
+                    <div class="timeline-content">
+                        <strong>Scan #3 — 9 Months</strong><br>
+                        Target: 24.0-24.5% body fat, 103-104 lbs lean mass. Into top 20% now!
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">Sep–Dec 2026</div>
+                    <div class="timeline-content">
+                        <strong>Q3: Peak Performance</strong><br>
+                        Final push, maintain strength, dial in nutrition
+                    </div>
+                </div>
+                
+                <div class="timeline-item birthday">
+                    <div class="timeline-date">Dec 28, 2026</div>
+                    <div class="timeline-content">
+                        <strong>Scan #4 — My 50th Birthday</strong><br>
+                        TARGET: 23-25% body fat (TOP 20%), 104-105 lbs lean mass<br>
+                        <em>The beginning of the best decades of your life</em>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>My Key Principles</h2>
+                
+                <div class="card-grid">
+                    <div class="info-section">
+                        <h4>Workout</h4>
+                        <ul style="margin-top: 10px;">
+                            <li>25 min every morning</li>
+                            <li>Before kids wake</li>
+                            <li>6/7 days = success</li>
+                            <li>Quality over quantity</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="info-section">
+                        <h4>Nutrition</h4>
+                        <ul style="margin-top: 10px;">
+                            <li>Protein at every meal</li>
+                            <li>"My Foods Only" rule</li>
+                            <li>No family food zone</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="info-section">
+                        <h4>Mindset</h4>
+                        <ul style="margin-top: 10px;">
+                            <li>Consistency over perfection</li>
+                            <li>Building for 50 years</li>
+                            <li>Progress, not perfection</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" style="text-align: center;">
+                <h3 style="margin-top: 0; color: #047857;">My Daily Mantra</h3>
+                <p style="font-size: 16px; line-height: 1.7; color: #1d1d1f; margin-top: 14px;">
+                    "This isn't about being perfect.<br>
+                    This is about being present.<br>
+                    I'm showing up for 50-year-old me,<br>
+                    and 100-year-old me."
+                </p>
+            </div>
+        </div>
+
+        <!-- TRACKER -->
+        <div id="tracker" class="section">
+            <button class="back-to-home" onclick="showSection('home')">← Back to Home</button>
+            
+            <div class="card">
+                <h2>Biometric Tracker</h2>
+                
+                <p style="margin-bottom: 28px;">I track my progress every 4 months with DEXA scans. I update this dashboard after each scan to see my journey.</p>
+
+                <h3>Current Metrics</h3>
+                <p style="color: #86868b; font-size: 14px; margin-bottom: 22px;">November 24, 2025</p>
+                
+                <div class="metric-card">
+                    <h4 style="margin-top: 0;">Body Fat Percentage: 27.7%</h4>
+                    <span class="badge badge-good">Above Average — 20-40th percentile</span>
+                    <p style="margin-top: 10px;"><strong>2026 Target:</strong> 23-25%</p>
+                </div>
+
+                <div class="metric-card">
+                    <h4 style="margin-top: 0;">Visceral Fat: 0.31 lbs</h4>
+                    <span class="badge badge-excellent">Excellent — Lowest 10%</span>
+                    <p style="margin-top: 10px;"><strong>2026 Target:</strong> <0.5 lbs</p>
+                </div>
+
+                <div class="metric-card">
+                    <h4 style="margin-top: 0;">Bone Density (Z-score): 0.9</h4>
+                    <span class="badge badge-good">Well Above Average — 69-93rd percentile</span>
+                    <p style="margin-top: 10px;"><strong>2026 Target:</strong> >0.5 (maintain or improve)</p>
+                </div>
+
+                <div class="metric-card">
+                    <h4 style="margin-top: 0;">Lean Mass: 101.8 lbs</h4>
+                    <span class="badge badge-good">Well Above Average — Top 20%</span>
+                    <p style="margin-top: 10px;"><strong>2026 Target:</strong> 103-105 lbs</p>
+                </div>
+
+                <div class="metric-card">
+                    <h4 style="margin-top: 0;">Android/Gynoid Ratio: 0.56</h4>
+                    <span class="badge badge-excellent">Excellent — Optimal distribution</span>
+                    <p style="margin-top: 10px;"><strong>2026 Target:</strong> <1.0</p>
+                </div>
+
+                <h3>Quarterly Goals</h3>
+                <table>
+                    <tr>
+                        <th>Scan Date</th>
+                        <th>Body Fat %</th>
+                        <th>Lean Mass (lbs)</th>
+                        <th>Total Weight (lbs)</th>
+                    </tr>
+                    <tr style="background: #fffbeb;">
+                        <td><strong>Baseline (Nov 2025)</strong></td>
+                        <td>27.7%</td>
+                        <td>101.8</td>
+                        <td>147.9</td>
+                    </tr>
+                    <tr>
+                        <td>Scan #2 (Apr 2026)</td>
+                        <td>25.5-26.0%</td>
+                        <td>102-103</td>
+                        <td>145-146</td>
+                    </tr>
+                    <tr>
+                        <td>Scan #3 (Aug 2026)</td>
+                        <td>24.0-24.5%</td>
+                        <td>103-104</td>
+                        <td>143-144</td>
+                    </tr>
+                    <tr style="background: #fef2f2;">
+                        <td><strong>Scan #4 (Dec 2026)</strong></td>
+                        <td><strong>23.0-25.0%</strong></td>
+                        <td><strong>104-105</strong></td>
+                        <td><strong>141-145</strong></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- CHECKLIST -->
+        <div id="checklist" class="section">
+            <button class="back-to-home" onclick="showSection('home')">← Back to Home</button>
+            
+            <div class="card">
+                <h2>Daily & Weekly Checklist</h2>
+                
+                <div class="info-section highlight">
+                    <h3 style="margin-top: 0; font-size: 19px;">The Non-Negotiables</h3>
+                    <ul>
+                        <li><strong>"The Morning 7" routine</strong> — 28 minutes, before kids wake</li>
+                        <li><strong>Protein at every meal</strong> — Palm-sized portion, no exceptions</li>
+                        <li><strong>"My Foods Only" rule</strong> — Stay out of the family zone</li>
+                    </ul>
+                </div>
+
+                <h3>Weekly Workout Goals</h3>
+                <div class="info-section">
+                    <p><strong>Target:</strong> Complete "The Morning 7" at least 6 out of 7 days</p>
+                    <p style="margin-top: 10px;"><strong>Bonus:</strong> Add 2x cardio sessions (stairs, park walks, or swimming when warm)</p>
+                    <p style="margin-top: 10px;"><strong>Rest Day:</strong> Sunday = Active rest (yoga, gentle walk, balance board play)</p>
+                </div>
+
+                <h3>Weekly Progress Tracking</h3>
+                <p style="font-size: 13px; color: #6e6e73; margin-bottom: 20px;">I fill in my progress each week. My data saves automatically in my browser!</p>
+                
+                <div id="weeklyTrackers"></div>
+
+            </div>
+        </div>
+
+        <!-- WORKOUT -->
+        <div id="workout" class="section">
+            <button class="back-to-home" onclick="showSection('home')">← Back to Home</button>
+            
+            <div class="card">
+                <h2>Progressive Overload Chart</h2>
+                <p style="margin-bottom: 28px;">Q1 2026 — My 16-Week Foundation</p>
+                
+                <p style="margin-bottom: 22px;">Follow this week-by-week progression for "The Morning 7" routine. Each week gets slightly harder — this is how I build muscle and lose fat. All weights are listed PER ARM.</p>
+
+                <div class="phase-indicators">
+                    <div style="background: #fef3c7; padding: 16px; border-radius: 10px; text-align: center;">
+                        <div style="font-size: 13px; font-weight: 600; color: #1d1d1f;">WEEKS 1-2</div>
+                        <div style="font-size: 12px; color: #6e6e73; margin-top: 2px;">Learning Phase</div>
+                    </div>
+                    <div style="background: #dbeafe; padding: 16px; border-radius: 10px; text-align: center;">
+                        <div style="font-size: 13px; font-weight: 600; color: #1d1d1f;">WEEKS 3-4</div>
+                        <div style="font-size: 12px; color: #6e6e73; margin-top: 2px;">Building Phase</div>
+                    </div>
+                    <div style="background: #d1fae5; padding: 16px; border-radius: 10px; text-align: center;">
+                        <div style="font-size: 13px; font-weight: 600; color: #1d1d1f;">WEEKS 5-8</div>
+                        <div style="font-size: 12px; color: #6e6e73; margin-top: 2px;">Momentum Phase</div>
+                    </div>
+                    <div style="background: #fce7f3; padding: 16px; border-radius: 10px; text-align: center;">
+                        <div style="font-size: 13px; font-weight: 600; color: #1d1d1f;">WEEKS 9-12</div>
+                        <div style="font-size: 12px; color: #6e6e73; margin-top: 2px;">Groove Phase</div>
+                    </div>
+                    <div style="background: #e0e7ff; padding: 16px; border-radius: 10px; text-align: center;">
+                        <div style="font-size: 13px; font-weight: 600; color: #1d1d1f;">WEEKS 13-16</div>
+                        <div style="font-size: 12px; color: #6e6e73; margin-top: 2px;">Pre-Scan Phase</div>
+                    </div>
+                </div>
+
+                <div class="info-section highlight">
+                    <h3 style="margin-top: 0; font-size: 19px;">How to Read the Chart</h3>
+                    <ul>
+                        <li><strong>Format:</strong> Sets x Reps @ Weight (e.g., "3x10 @ 10lbs" = 3 sets of 10 reps with 10 lbs)</li>
+                        <li><strong>Progressive overload:</strong> Each week gets slightly harder</li>
+                        <li><strong>Don't skip ahead:</strong> Your body needs time to adapt</li>
+                        <li><strong>If you can't complete sets:</strong> Drop back to previous week and try again</li>
+                    </ul>
+                </div>
+
+                <h3>"The Morning 7" Routine Structure</h3>
+                <div class="info-section">
+                    <p><strong>Total Time: 28 minutes</strong></p>
+                    
+                    <p style="margin-bottom: 16px;"><strong>Equipment I Have:</strong> Perfect Pushup handles, Dumbbells (10-30 lbs), FLYBIRD Adjustable bench, Balance board, Yoga mat</p>
+                    
+                    <h4>Warm-up (3 minutes)</h4>
+                    <ol>
+                        <li>Balance board standing — 1 min</li>
+                        <li>Arm circles + shoulder rolls — 1 min</li>
+                        <li>Hip circles + leg swings — 1 min</li>
+                    </ol>
+
+                    <h4>The Core 7 (21 minutes — 30 sec rest between sets)</h4>
+                    <ol>
+                        <li><strong>Perfect Pushups</strong> — Chest, shoulders, triceps (Perfect Pushup handles)</li>
+                        <li><strong>Dumbbell Squats</strong> — Legs, glutes, core (10 lbs per arm, goblet or front-rack style)</li>
+                        <li><strong>Bent-Over Rows</strong> — Back, shoulders, biceps (bench + 10 lbs per arm)</li>
+                        <li><strong>Reverse Lunges</strong> — Legs, glutes, balance (dumbbells per arm)</li>
+                        <li><strong>Hip Thrusts</strong> — Glutes, hamstrings (FLYBIRD bench + dumbbell on hips)</li>
+                        <li><strong>Plank Holds</strong> — Entire core (toes, not knees)</li>
+                        <li><strong>Bird Dogs</strong> — Core stability, balance (with holds)</li>
+                    </ol>
+
+                    <h4>Cool-down (4 minutes)</h4>
+                    <ol>
+                        <li>Child's pose — 1 min</li>
+                        <li>Cat-cow stretches — 1 min</li>
+                        <li>Hip flexor stretch — 1 min each side</li>
+                    </ol>
+                    
+                    <div class="info-section success" style="margin-top: 20px;">
+                        <h4 style="margin-top: 0;">My FLYBIRD Bench</h4>
+                        <p>I just got a FLYBIRD adjustable bench (800 lbs capacity, -30° to 90°). Here's how I use it:</p>
+                        <ul>
+                            <li><strong>Rows:</strong> Much more stable than leaning on couch</li>
+                            <li><strong>Hip Thrusts:</strong> Perfect height for glute activation</li>
+                            <li><strong>Future:</strong> Incline pushups, step-ups, chest press variations</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3>Weeks 1-2: Foundation Phase — "Build from MY Baseline"</h3>
+                <p style="font-size: 13px; color: #6e6e73; margin-bottom: 18px;">Jan 5-18, 2026</p>
+                <table>
+                    <tr>
+                        <th>Exercise</th>
+                        <th>Week 1<br><span style="font-size: 11px; font-weight: 400; opacity: 0.8;">Jan 5-11</span></th>
+                        <th>Week 2<br><span style="font-size: 11px; font-weight: 400; opacity: 0.8;">Jan 12-18</span></th>
+                    </tr>
+                    <tr>
+                        <td><strong>1. Perfect Pushups</strong></td>
+                        <td>2x10 (knees) + 1x5 (full)</td>
+                        <td>2x8 (knees) + 1x8 (full)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>2. Dumbbell Squats</strong></td>
+                        <td>3x12 @ 10lbs per arm</td>
+                        <td>3x15 @ 10lbs per arm</td>
+                    </tr>
+                    <tr>
+                        <td><strong>3. Bent-Over Rows</strong></td>
+                        <td>3x10 @ 10lbs per arm</td>
+                        <td>3x12 @ 10lbs per arm</td>
+                    </tr>
+                    <tr>
+                        <td><strong>4. Reverse Lunges</strong></td>
+                        <td>3x8 @ 5lbs per arm</td>
+                        <td>3x10 @ 5lbs per arm</td>
+                    </tr>
+                    <tr>
+                        <td><strong>5. Hip Thrusts</strong></td>
+                        <td>3x12 @ 10lbs (single DB on hips)</td>
+                        <td>3x15 @ 10lbs</td>
+                    </tr>
+                    <tr>
+                        <td><strong>6. Plank Holds</strong></td>
+                        <td>3x30sec (on toes)</td>
+                        <td>3x35sec (on toes)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>7. Bird Dogs</strong></td>
+                        <td>3x8 (2sec hold each)</td>
+                        <td>3x10 (2sec hold each)</td>
+                    </tr>
+                </table>
+
+                <h3>Weeks 3-4: Building Phase</h3>
+                <p style="font-size: 13px; color: #6e6e73; margin-bottom: 18px;">Jan 19 - Feb 1, 2026</p>
+                <table>
+                    <tr>
+                        <th>Exercise</th>
+                        <th>Week 3<br><span style="font-size: 11px; font-weight: 400; opacity: 0.8;">Jan 19-25</span></th>
+                        <th>Week 4<br><span style="font-size: 11px; font-weight: 400; opacity: 0.8;">Jan 26-Feb 1</span></th>
+                    </tr>
+                    <tr>
+                        <td><strong>1. Perfect Pushups</strong></td>
+                        <td style="background: #fffbeb;">3x10 (full pushups) ↑</td>
+                        <td>3x12 (full)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>2. Dumbbell Squats</strong></td>
+                        <td>3x15 @ 10lbs per arm</td>
+                        <td style="background: #fffbeb;">3x12 @ 12.5lbs per arm ↑</td>
+                    </tr>
+                    <tr>
+                        <td><strong>3. Bent-Over Rows</strong></td>
+                        <td>3x12 @ 10lbs per arm</td>
+                        <td style="background: #fffbeb;">3x12 @ 12.5lbs per arm ↑</td>
+                    </tr>
+                    <tr>
+                        <td><strong>4. Reverse Lunges</strong></td>
+                        <td>3x10 @ 5lbs per arm</td>
+                        <td style="background: #fffbeb;">3x12 @ 7.5lbs per arm ↑</td>
+                    </tr>
+                    <tr>
+                        <td><strong>5. Hip Thrusts</strong></td>
+                        <td>3x15 @ 10lbs</td>
+                        <td style="background: #fffbeb;">3x15 @ 15lbs ↑</td>
+                    </tr>
+                    <tr>
+                        <td><strong>6. Plank Holds</strong></td>
+                        <td style="background: #fffbeb;">3x40sec ↑</td>
+                        <td>3x45sec</td>
+                    </tr>
+                    <tr>
+                        <td><strong>7. Bird Dogs</strong></td>
+                        <td>3x10 (3sec hold)</td>
+                        <td style="background: #fffbeb;">3x12 (3sec hold) ↑</td>
+                    </tr>
+                </table>
+
+                <h3>Weeks 5-8: Momentum Phase</h3>
+                <p style="font-size: 13px; color: #6e6e73; margin-bottom: 18px;">Feb 2 - Mar 1, 2026</p>
+                <div class="info-section">
+                    <p><strong>Big Changes This Phase:</strong></p>
+                    <ul>
+                        <li>Full pushups only - no more knees</li>
+                        <li>Increase squat weight to 15 lbs per arm (30 lbs total)</li>
+                        <li>Increase row weight to 15 lbs per arm</li>
+                        <li>Planks extending to 50-60 sec</li>
+                        <li>Hip thrusts up to 20 lbs</li>
+                    </ul>
+                </div>
+
+                <table>
+                    <tr>
+                        <th>Exercise</th>
+                        <th>Week 5<br><span style="font-size: 11px; font-weight: 400; opacity: 0.8;">Feb 2-8</span></th>
+                        <th>Week 8<br><span style="font-size: 11px; font-weight: 400; opacity: 0.8;">Feb 23-Mar 1</span></th>
+                    </tr>
+                    <tr>
+                        <td><strong>1. Perfect Pushups</strong></td>
+                        <td style="background: #fffbeb;">3x12 (full) ↑</td>
+                        <td>3x15 (full)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>2. Dumbbell Squats</strong></td>
+                        <td style="background: #fffbeb;">3x12 @ 15lbs per arm ↑</td>
+                        <td>3x15 @ 15lbs per arm</td>
+                    </tr>
+                    <tr>
+                        <td><strong>3. Bent-Over Rows</strong></td>
+                        <td style="background: #fffbeb;">3x12 @ 15lbs per arm ↑</td>
+                        <td>3x15 @ 15lbs per arm</td>
+                    </tr>
+                    <tr>
+                        <td><strong>4. Reverse Lunges</strong></td>
+                        <td>3x12 @ 7.5lbs per arm</td>
+                        <td style="background: #fffbeb;">3x12 @ 10lbs per arm ↑</td>
+                    </tr>
+                    <tr>
+                        <td><strong>5. Hip Thrusts</strong></td>
+                        <td style="background: #fffbeb;">3x15 @ 20lbs ↑</td>
+                        <td>3x20 @ 20lbs</td>
+                    </tr>
+                    <tr>
+                        <td><strong>6. Plank Holds</strong></td>
+                        <td style="background: #fffbeb;">3x50sec ↑</td>
+                        <td>3x60sec</td>
+                    </tr>
+                    <tr>
+                        <td><strong>7. Bird Dogs</strong></td>
+                        <td>3x12 (3sec hold)</td>
+                        <td style="background: #fffbeb;">3x12 (5sec hold) ↑</td>
+                    </tr>
+                </table>
+
+                <div class="info-section success">
+                    <h4 style="margin-top: 0;">End of Week 8 Milestone</h4>
+                    <p>I'm 2 months in! Full pushups, 30 lbs on squats (15 per arm), 1-minute planks. This is my new normal.</p>
+                </div>
+
+                <h3>Weeks 9-16: Groove & Pre-Scan Phase</h3>
+                <p style="font-size: 13px; color: #6e6e73; margin-bottom: 18px;">Mar 2 - Apr 26, 2026</p>
+                <div class="info-section">
+                    <p><strong>By Week 16, I'll Be At:</strong></p>
+                    <ul>
+                        <li>Pushups: 3x20 (full) = 60 total pushups</li>
+                        <li>Squats: 3x15 @ 20lbs per arm (40 lbs total)</li>
+                        <li>Rows: 3x15 @ 20lbs per arm</li>
+                        <li>Lunges: 3x15 @ 12.5lbs per arm</li>
+                        <li>Hip Thrusts: 3x20 @ 25-30lbs</li>
+                        <li>Plank: 3x75sec</li>
+                        <li>Bird Dogs: 3x12 (5sec holds)</li>
+                    </ul>
+                </div>
+
+                <div class="info-section warning">
+                    <h4 style="margin-top: 0;">Week 16 = Scan Time (Apr 20-26, 2026)</h4>
+                    <p>Schedule your DEXA scan for end of April 2026. Take progress photos. Review how clothes fit. Celebrate consistency regardless of numbers.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- MEALS -->
+        <div id="meals" class="section">
+            <button class="back-to-home" onclick="showSection('home')">← Back to Home</button>
+            
+            <div class="card">
+                <h2>Meal Prep Guide</h2>
+                
+                <div class="info-section highlight">
+                    <h3 style="margin-top: 0; font-size: 19px;">"My Foods" vs "Family Foods" Strategy</h3>
+                    <p><strong>The Reality:</strong> You're feeding a 16-year-old athlete, 9-year-old girl, and 55-year-old husband. You CAN'T eliminate all trigger foods from your house.</p>
+                    <p style="margin-top: 14px;"><strong>The Solution:</strong> ZONES, not elimination.</p>
+                </div>
+
+                <div class="card-grid">
+                    <div class="info-section success">
+                        <h4 style="margin-top: 0;">Alejandra's Zone</h4>
+                        <p><strong>My Shelf/Drawer:</strong></p>
+                        <ul style="margin-top: 10px;">
+                            <li>My proteins, eggs, Greek yogurt/cottage cheese</li>
+                            <li>My vegetables</li>
+                            <li>My nuts (pre-portioned)</li>
+                            <li>My avocados</li>
+                            <li>My sweet potatoes</li>
+                        </ul>
+                        <p style="font-weight: 600; margin-top: 14px;">I EAT ONLY FROM HERE</p>
+                    </div>
+                    
+                    <div class="info-section warning">
+                        <h4 style="margin-top: 0;">Family Zone</h4>
+                        <p><strong>Their Shelves:</strong></p>
+                        <ul style="margin-top: 10px;">
+                            <li>Son's pasta, rice, bread</li>
+                            <li>Daughter's snacks, cereals</li>
+                            <li>Husband's foods</li>
+                            <li>Family desserts</li>
+                            <li>Chips, cookies, crackers</li>
+                        </ul>
+                        <p style="font-weight: 600; margin-top: 14px;">I DON'T TOUCH THESE</p>
+                    </div>
+                </div>
+
+                <div class="info-section">
+                    <h4 style="margin-top: 0;">The "No Touch" Rule When Cooking for Family</h4>
+                    <ul>
+                        <li>Cooking son's pasta? Don't taste it. Timer tells you when it's done.</li>
+                        <li>Making family pizza night? Eat MY meal first (grilled chicken + huge salad), then sit with them.</li>
+                        <li>Daughter wants cookies? Put on HER shelf immediately. Don't look at them.</li>
+                        <li>If you touch family food, wash hands and walk away immediately.</li>
+                    </ul>
+                </div>
+
+                <h3>Sunday Shopping List</h3>
+                <p style="margin-bottom: 18px;">Your Foods Only</p>
+                
+                <div class="info-section">
+                    <h4>Proteins</h4>
+                    <ul>
+                        <li>Chicken breasts (3 lbs)</li>
+                        <li>Ground turkey (2 lbs)</li>
+                        <li>Salmon fillets (4-6 oz)</li>
+                        <li>Shrimp (1 lb)</li>
+                        <li>Eggs (18 count)</li>
+                        <li>Greek yogurt OR cottage cheese, plain (32 oz)</li>
+                    </ul>
+
+                    <h4>Vegetables</h4>
+                    <ul>
+                        <li>Spinach (1 large bag)</li>
+                        <li>Mixed greens (2 bags)</li>
+                        <li>Broccoli (2 heads)</li>
+                        <li>Cauliflower (1 head)</li>
+                        <li>Zucchini (3-4)</li>
+                        <li>Bell peppers (4-5)</li>
+                        <li>Cucumbers (2-3)</li>
+                        <li>Cherry tomatoes (2 pints)</li>
+                        <li>Asparagus (1 bunch)</li>
+                    </ul>
+
+                    <h4>Fats & Extras</h4>
+                    <ul>
+                        <li>Avocados (4-5)</li>
+                        <li>Olive oil</li>
+                        <li>Almonds (small bag)</li>
+                        <li>Walnuts (small bag)</li>
+                        <li>Sweet potatoes (3-4)</li>
+                        <li>Berries (2 containers)</li>
+                        <li>Lemons (4-5)</li>
+                    </ul>
+
+                    <div class="info-section warning" style="margin-top: 22px;">
+                        <p><strong>Important:</strong> Pre-portion nuts into 1/4 cup containers IMMEDIATELY when you get home. If you eat from the bag, you'll eat the whole bag.</p>
+                    </div>
+                </div>
+
+                <h3>Sunday Meal Prep Schedule</h3>
+                <p style="margin-bottom: 18px;">2 Hours — Set Yourself Up for Success</p>
+                
+                <div class="info-section">
+                    <h4>15 min — Setup</h4>
+                    <ul>
+                        <li>Clear MY shelf/drawer in fridge</li>
+                        <li>Get out 6-8 glass containers</li>
+                        <li>Preheat oven to 400°F</li>
+                        <li>Pre-portion nuts into small containers</li>
+                    </ul>
+
+                    <h4>45 min — Cook Proteins</h4>
+                    <ul>
+                        <li>Season 3 lbs chicken breasts → bake 25-30 min at 400°F</li>
+                        <li>While baking: cook ground turkey in skillet with taco seasoning</li>
+                        <li>Last 10 min: grill or pan-sear salmon</li>
+                        <li>Hard boil 12 eggs</li>
+                    </ul>
+
+                    <h4>30 min — Prep Vegetables</h4>
+                    <ul>
+                        <li>Chop broccoli, cauliflower, peppers, zucchini</li>
+                        <li>Toss with olive oil, salt, pepper → roast at 425°F for 20 min</li>
+                        <li>Wash and portion salad greens into containers</li>
+                        <li>Slice cucumbers, cherry tomatoes</li>
+                    </ul>
+
+                    <h4>20 min — Assemble & Store</h4>
+                    <ul>
+                        <li>Divide chicken into 6 containers (5-6 oz each)</li>
+                        <li>Portion ground turkey into 3 containers</li>
+                        <li>Store salmon and eggs separately</li>
+                        <li>Put roasted veggies in 2 large containers</li>
+                        <li>Label everything with dates</li>
+                    </ul>
+
+                    <h4>10 min — Clean Up</h4>
+                    <ul>
+                        <li>Wash dishes</li>
+                        <li>Organize MY fridge shelf</li>
+                        <li>Set out workout clothes for Monday</li>
+                        <li>Feel proud of yourself</li>
+                    </ul>
+                </div>
+
+                <h3>Key Recipe: Basic Baked Chicken</h3>
+                <div class="info-section">
+                    <p><strong>Your Protein Staple — Makes 6 servings</strong></p>
+                    
+                    <h4>Ingredients</h4>
+                    <ul>
+                        <li>3 lbs chicken breasts (boneless, skinless)</li>
+                        <li>2 tbsp olive oil</li>
+                        <li>2 tsp garlic powder</li>
+                        <li>2 tsp paprika</li>
+                        <li>1 tsp salt, 1/2 tsp black pepper</li>
+                        <li>1 tsp Italian seasoning (optional)</li>
+                    </ul>
+
+                    <h4>Instructions</h4>
+                    <ol>
+                        <li>Preheat oven to 400°F</li>
+                        <li>Pat chicken dry with paper towels</li>
+                        <li>Rub with olive oil, season both sides</li>
+                        <li>Place on baking sheet with parchment paper</li>
+                        <li>Bake 25-30 min until internal temp 165°F</li>
+                        <li>Let rest 5 min, then store in 6 containers</li>
+                    </ol>
+
+                    <p style="margin-top: 14px;"><strong>Per Serving:</strong> 250 cal | 40g protein | 8g fat | 0g carbs</p>
+                </div>
+
+                <h3>"The Alejandra Salad" — Daily Template</h3>
+                <div class="info-section">
+                    <h4>Build This Salad Daily</h4>
+                    <ul>
+                        <li>3-4 cups mixed greens or spinach (HUGE bowl)</li>
+                        <li>1/2 cup cherry tomatoes, halved</li>
+                        <li>1/2 cucumber, sliced</li>
+                        <li>1/4 bell pepper, chopped</li>
+                        <li>2 tbsp olive oil + 1 tbsp lemon juice</li>
+                        <li>Salt, pepper to taste</li>
+                        <li>Optional: 1/4 avocado OR 1/4 cup nuts</li>
+                    </ul>
+
+                    <p style="margin-top: 14px;"><strong>Why This Works:</strong> Huge volume fills you up with only ~200 calories, leaving room for protein and healthy fats.</p>
+                </div>
+
+                <h3>Troubleshooting Common Situations</h3>
+                <div class="info-section">
+                    <h4>"I'm starving between meals"</h4>
+                    <ul>
+                        <li>Increase vegetable portions (unlimited)</li>
+                        <li>Drink more water</li>
+                        <li>Emergency snack: Hard boiled eggs, celery with almond butter</li>
+                        <li>Check protein — did you hit your target?</li>
+                    </ul>
+
+                    <h4>"It's family pizza night"</h4>
+                    <ul>
+                        <li>Eat MY meal BEFORE they order (grilled chicken + huge salad)</li>
+                        <li>Sit with family while they eat</li>
+                        <li>Have herbal tea or sparkling water</li>
+                        <li>Remember: Pizza is not MY food anymore</li>
+                    </ul>
+
+                    <h4>"I broke down and ate chips/cookies"</h4>
+                    <ul>
+                        <li>STOP immediately — don't finish the bag</li>
+                        <li>Remove from sight</li>
+                        <li>Drink 2 glasses of water</li>
+                        <li>Next meal = protein + vegetables</li>
+                        <li>Don't skip next workout</li>
+                        <li>One slip ≠ failure</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- FORM -->
+        <div id="form" class="section">
+            <button class="back-to-home" onclick="showSection('home')">← Back to Home</button>
+            
+            <div class="card">
+                <h2>Form Check Guide</h2>
+                <p style="margin-bottom: 28px;">Perfect form for "The Morning 7"</p>
+                
+                <p style="margin-bottom: 22px;">Perfect form prevents injury and builds strength faster. Learn these movements properly.</p>
+
+                <div class="info-section warning">
+                    <h4 style="margin-top: 0;">Your Ankle Consideration</h4>
+                    <p>I have hardware in my ankle from a previous injury. All exercises are LOW-IMPACT and ankle-safe. However, I always listen to my body. If something hurts (not just feels hard, but actually HURTS), I stop and modify.</p>
+                </div>
+
+                <h3>General Form Principles</h3>
+                <div class="info-section">
+                    <ul>
+                        <li><strong>Quality over quantity:</strong> 5 perfect reps beat 10 sloppy reps</li>
+                        <li><strong>Controlled movement:</strong> 2 seconds down, 1 second up</li>
+                        <li><strong>Breathe:</strong> Exhale on exertion (hard part), inhale on easy part</li>
+                        <li><strong>Core engaged:</strong> Pull belly button toward spine</li>
+                        <li><strong>No pain:</strong> Discomfort is okay. Sharp pain is not.</li>
+                        <li><strong>Film yourself:</strong> Record with phone to check form</li>
+                    </ul>
+                </div>
+
+                <h3>1. Perfect Pushups</h3>
+                <div class="metric-card">
+                    <p><strong>Muscles Worked:</strong> Chest, shoulders, triceps, core</p>
+                    
+                    <p style="margin-top: 12px;"><strong>What This Is:</strong> A pushup using my Perfect Pushup handles (the rotating handles I have). I'll start on my knees, then progress to full pushups on my toes. Works my upper body and core.</p>
+
+                    <div class="exercise-demo">START POSITION:
+    HEAD
+     |
+    ★★★  SHOULDERS (over hands)
+    |███|
+    |███| BODY (straight line)
+    |███|
+    /   \  KNEES (modified) or TOES (full)
+
+BOTTOM POSITION:
+    HEAD (neutral)
+     |
+    ★★★  ELBOWS (45° angle)
+   ↙ █ ↘
+  /  ███  \  CHEST (1-2" from floor)
+ |   ███   |
+    /   \</div>
+
+                    <div class="info-section success">
+                        <h4 style="margin-top: 0;">Correct Form</h4>
+                        <ul>
+                            <li>Hands slightly wider than shoulders on Perfect Pushup handles</li>
+                            <li>Straight line from head to knees/heels</li>
+                            <li>Core squeezed tight — no sagging hips</li>
+                            <li>Elbows at 45° from body (not flared to 90°)</li>
+                            <li>Chest lowers 1-2 inches from floor</li>
+                            <li>Head neutral, looking slightly ahead</li>
+                        </ul>
+                    </div>
+
+                    <div class="info-section warning">
+                        <h4 style="margin-top: 0;">Common Mistakes</h4>
+                        <ul>
+                            <li>Sagging hips (looks like banana) — core not engaged</li>
+                            <li>Butt in air (too easy)</li>
+                            <li>Elbows flared at 90° (shoulder strain)</li>
+                            <li>Half reps — go all the way down</li>
+                            <li>Speed rushing — slow and controlled</li>
+                        </ul>
+                    </div>
+
+                    <p style="margin-top: 14px;"><strong>Progression:</strong> Week 1-2 on knees → Week 5+ mix of knees and full → Week 7+ all full pushups</p>
+                </div>
+
+                <h3>2. Dumbbell Squats</h3>
+                <div class="metric-card">
+                    <p><strong>Muscles Worked:</strong> Quads, glutes, hamstrings, core</p>
+                    
+                    <p style="margin-top: 12px;"><strong>What This Is:</strong> A squat holding a dumbbell at my chest (like holding a goblet). I sit back and down like sitting in a chair, then stand back up. The KING of leg exercises - builds strong legs and glutes.</p>
+
+                    <div class="exercise-demo">START:
+    HEAD (up)
+    |
+   [DB]  (at chest)
+    | |█| |
+    | |█| |
+   KNEES (soft)
+   FEET (shoulder-width)
+
+BOTTOM:
+    HEAD (still up)
+    |
+   [DB]
+    | |█| |
+    | |▼| |  HIPS (back and down)
+    | 📐 |  KNEES (over toes, 90°)
+   HEELS (DOWN)</div>
+
+                    <div class="info-section success">
+                        <h4 style="margin-top: 0;">Correct Form</h4>
+                        <ul>
+                            <li>Hold 10 lb dumbbell at chest OR one in each hand at shoulders</li>
+                            <li>Feet shoulder-width, toes slightly out (10-15°)</li>
+                            <li>Sit BACK and DOWN like sitting in a chair</li>
+                            <li>Hips go at least parallel to knees</li>
+                            <li>Knees track over toes, don't cave inward</li>
+                            <li>Chest stays proud and up</li>
+                            <li>Heels flat on floor entire time</li>
+                        </ul>
+                    </div>
+
+                    <div class="info-section warning">
+                        <h4 style="margin-top: 0;">Common Mistakes</h4>
+                        <ul>
+                            <li>Knees caving inward — push them OUT</li>
+                            <li>Heels lifting — sit BACK more</li>
+                            <li>Chest collapsing forward — stay upright</li>
+                            <li>Shallow squats — go deeper</li>
+                            <li>Speed rushing — controlled down, explosive up</li>
+                        </ul>
+                    </div>
+
+                    <p style="margin-top: 14px;"><strong>Ankle-safe!</strong> No impact. If ankle feels uncomfortable, try wider stance or small plate under heels.</p>
+                </div>
+
+                <h3>3. Bent-Over Rows</h3>
+                <div class="metric-card">
+                    <p><strong>Muscles Worked:</strong> Lats, rhomboids, rear delts, biceps</p>
+                    
+                    <p style="margin-top: 12px;"><strong>What This Is:</strong> A pulling exercise where I lean on my bench for support and pull a dumbbell up to my side, like starting a lawnmower. Builds my back muscles and improves posture.</p>
+
+                    <div class="info-section success">
+                        <h4 style="margin-top: 0;">Correct Form (Using Your Bench)</h4>
+                        <ul>
+                            <li>Set bench to flat position (0°)</li>
+                            <li>Left knee and left hand on bench for support</li>
+                            <li>Right foot on floor, slight bend in knee</li>
+                            <li>Back flat, parallel to floor (like a table top)</li>
+                            <li>Right arm hangs straight down with dumbbell, slight elbow bend</li>
+                            <li>Pull: Drive elbow BACK toward hip (not out to side)</li>
+                            <li>Squeeze shoulder blade toward spine at top</li>
+                            <li>Control: 2 sec up, 1 sec squeeze, 2 sec down</li>
+                            <li>Core tight — don't rotate torso</li>
+                            <li>Switch sides after completing all reps</li>
+                        </ul>
+                    </div>
+
+                    <div class="info-section warning">
+                        <h4 style="margin-top: 0;">Common Mistakes</h4>
+                        <ul>
+                            <li>Rounded back — flatten it</li>
+                            <li>Elbow flaring out to side — should go BACK</li>
+                            <li>Using momentum — jerking weight</li>
+                            <li>Rotating torso — keep stable</li>
+                            <li>Partial range — pull elbow past torso</li>
+                        </ul>
+                    </div>
+
+                    <p style="margin-top: 14px;"><strong>Why the bench is better:</strong> More stable than a couch, correct height, and won't slide around. Critical for bone density in spine and posture. Focus on the SQUEEZE at top.</p>
+                </div>
+
+                <h3>4. Reverse Lunges</h3>
+                <div class="metric-card">
+                    <p><strong>Muscles Worked:</strong> Quads, glutes, hamstrings, balance</p>
+                    
+                    <p style="margin-top: 12px;"><strong>What This Is:</strong> Standing upright with dumbbells at my sides, I step BACKWARD with one leg, lower my back knee toward the floor, then push back up to standing. I do REVERSE (not forward) lunges because they're low-impact and safe for my ankle.</p>
+
+                    <div class="info-section success">
+                        <h4 style="margin-top: 0;">Correct Form</h4>
+                        <ul>
+                            <li>Start standing tall, dumbbells at sides</li>
+                            <li>Step BACK with one leg (not forward)</li>
+                            <li>Drop back knee toward floor (hover 1-2")</li>
+                            <li>Front knee at 90°, stays over ankle (not past toes)</li>
+                            <li>Back knee also at 90°</li>
+                            <li>Torso stays upright (not leaning forward)</li>
+                            <li>Push through FRONT heel to return to standing</li>
+                        </ul>
+                    </div>
+
+                    <div class="info-section warning">
+                        <h4 style="margin-top: 0;">Common Mistakes</h4>
+                        <ul>
+                            <li>Forward lunge — DON'T (high impact, bad for ankle)</li>
+                            <li>Front knee past toes — step back farther</li>
+                            <li>Leaning forward — stay upright</li>
+                            <li>Back knee crashing — control the descent</li>
+                            <li>Rising on front toes — drive through heel</li>
+                        </ul>
+                    </div>
+
+                    <p style="margin-top: 14px;"><strong>Why reverse for me:</strong> Forward lunges create impact. Reverse lunges are controlled and gentle on ankle hardware.</p>
+                </div>
+
+                <h3>5. Hip Thrusts</h3>
+                <div class="metric-card">
+                    <p><strong>Muscles Worked:</strong> Glutes, hamstrings, lower back</p>
+                    
+                    <p style="margin-top: 12px;"><strong>What This Is:</strong> I sit on the floor with my upper back against my FLYBIRD bench, knees bent, feet flat. I place a dumbbell on my hips, then drive through my heels to lift my hips until my body forms a straight line from shoulders to knees. This is THE best exercise for building strong glutes.</p>
+
+                    <div class="info-section success">
+                        <h4 style="margin-top: 0;">Correct Form (Using My Bench)</h4>
+                        <ul>
+                            <li>Set bench to flat position (0°)</li>
+                            <li>Sit on floor, upper back/shoulders against bench edge</li>
+                            <li>Feet flat on floor, hip-width apart, knees bent 90°</li>
+                            <li>Place dumbbell across hips (use a towel for padding)</li>
+                            <li>Drive through heels, lift hips up</li>
+                            <li>Top position: Shoulders on bench, knees to shoulders = straight line</li>
+                            <li>Squeeze glutes HARD at the top for 1-2 sec</li>
+                            <li>Lower with control, don't crash down</li>
+                            <li>Keep core engaged throughout</li>
+                        </ul>
+                    </div>
+
+                    <div class="info-section warning">
+                        <h4 style="margin-top: 0;">Common Mistakes</h4>
+                        <ul>
+                            <li>Hyperextending back at top — stop at straight line</li>
+                            <li>Rising on toes — drive through heels</li>
+                            <li>Not squeezing glutes — that's where the magic happens</li>
+                            <li>Feet too close or too far — adjust for 90° knee angle</li>
+                            <li>Rushing reps — slow and controlled wins</li>
+                        </ul>
+                    </div>
+
+                    <p style="margin-top: 14px;"><strong>Why this matters:</strong> Strong glutes protect my lower back, improve posture, and are critical for longevity. This exercise hits them better than anything else.</p>
+                </div>
+
+                <h3>6. Plank Holds</h3>
+                <div class="metric-card">
+                    <p><strong>Muscles Worked:</strong> Entire core, shoulders, back</p>
+                    
+                    <p style="margin-top: 12px;"><strong>What This Is:</strong> I hold a rigid, straight-body position on my forearms and knees (or toes). Like a wooden plank. I just HOLD IT - no movement. Sounds easy, but it's incredibly effective for core strength. I'll start on knees, progress to toes.</p>
+
+                    <div class="exercise-demo">CORRECT PLANK:
+    HEAD (neutral)
+     |
+    ★★★  SHOULDERS (over elbows)
+    |███|
+    |███| PERFECT STRAIGHT LINE
+    |███| (like a plank of wood)
+
+WRONG — SAGGING:
+    ★★★
+    |███|
+    | ↓ | ⚠️ HIPS DROPPING
+    | ▼ |
+
+WRONG — BUTT HIGH:
+    ★★★
+    | △ | ⚠️ HIPS IN AIR
+    |△ △| (too easy)</div>
+
+                    <div class="info-section success">
+                        <h4 style="margin-top: 0;">Correct Form</h4>
+                        <ul>
+                            <li>Forearms on mat, elbows under shoulders</li>
+                            <li>Straight line from head to heels (or knees if modified)</li>
+                            <li>Core squeezed like someone's about to punch you</li>
+                            <li>Glutes squeezed tight — prevents hip sag</li>
+                            <li>Shoulders active — push floor away</li>
+                            <li>Head neutral — don't look up or hang down</li>
+                            <li>Breathe normally — don't hold breath</li>
+                        </ul>
+                    </div>
+
+                    <div class="info-section warning">
+                        <h4 style="margin-top: 0;">Common Mistakes</h4>
+                        <ul>
+                            <li>Sagging hips — most common! Squeeze glutes</li>
+                            <li>Butt too high — lower to straight line</li>
+                            <li>Looking up — strains neck</li>
+                            <li>Holding breath — breathe</li>
+                            <li>Going too long with bad form — better 30 sec perfect than 60 sec poorly</li>
+                        </ul>
+                    </div>
+
+                    <p style="margin-top: 14px;"><strong>Balance board challenge:</strong> Once you can hold 45 sec on floor, try plank on balance board for extra difficulty.</p>
+                </div>
+
+                <h3>7. Bird Dogs</h3>
+                <div class="metric-card">
+                    <p><strong>Muscles Worked:</strong> Core, glutes, lower back, shoulders</p>
+                    
+                    <p style="margin-top: 12px;"><strong>What This Is:</strong> On my hands and knees, I extend opposite arm and leg (right arm + left leg), hold for a few seconds, then return. It's called "bird dog" because I look like a hunting dog pointing at prey. Great for core stability and balance - especially important for entrepreneurs who sit a lot!</p>
+
+                    <div class="info-section success">
+                        <h4 style="margin-top: 0;">Correct Form</h4>
+                        <ul>
+                            <li>Start on hands and knees (hands under shoulders, knees under hips)</li>
+                            <li>Extend opposite arm and leg (right arm + left leg)</li>
+                            <li>Arm straight ahead, thumb pointing up</li>
+                            <li>Leg straight back, flex foot, squeeze glute</li>
+                            <li>Hips stay level — don't let extending hip drop</li>
+                            <li>Shoulders stay level — don't rotate torso</li>
+                            <li>Imagine balancing cup of water on back</li>
+                            <li>Hold 2-3 sec at top, return slowly</li>
+                        </ul>
+                    </div>
+
+                    <div class="info-section warning">
+                        <h4 style="margin-top: 0;">Common Mistakes</h4>
+                        <ul>
+                            <li>Rotating hips — hip drops when leg extends</li>
+                            <li>Rotating shoulders — stay square</li>
+                            <li>Arching lower back — core not tight</li>
+                            <li>Speed rushing — slow and controlled</li>
+                            <li>Not extending fully — full arm and leg extension</li>
+                            <li>Head dropping — neck in line with spine</li>
+                        </ul>
+                    </div>
+
+                    <p style="margin-top: 14px;"><strong>Gold for core stability</strong> and back health — especially important for entrepreneurship (lots of sitting).</p>
+                </div>
+
+                <div class="card" style="text-align: center; margin-top: 36px;">
+                    <h3 style="margin-top: 0; color: #047857;">Form Check Reminder</h3>
+                    <p style="font-size: 14px; line-height: 1.6; color: #1d1d1f;">
+                        Film yourself once per week.<br>
+                        Quality over quantity, always.<br>
+                        Perfect form builds a perfect foundation<br>
+                        for the next 50 years.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+        const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+        
+        const weeks = [
+            { num: 1, start: 'Jan 5', end: 'Jan 11', year: '2026', startDate: new Date(2026, 0, 5) },
+            { num: 2, start: 'Jan 12', end: 'Jan 18', year: '2026', startDate: new Date(2026, 0, 12) },
+            { num: 3, start: 'Jan 19', end: 'Jan 25', year: '2026', startDate: new Date(2026, 0, 19) },
+            { num: 4, start: 'Jan 26', end: 'Feb 1', year: '2026', startDate: new Date(2026, 0, 26) },
+            { num: 5, start: 'Feb 2', end: 'Feb 8', year: '2026', startDate: new Date(2026, 1, 2) },
+            { num: 6, start: 'Feb 9', end: 'Feb 15', year: '2026', startDate: new Date(2026, 1, 9) },
+            { num: 7, start: 'Feb 16', end: 'Feb 22', year: '2026', startDate: new Date(2026, 1, 16) },
+            { num: 8, start: 'Feb 23', end: 'Mar 1', year: '2026', startDate: new Date(2026, 1, 23) },
+            { num: 9, start: 'Mar 2', end: 'Mar 8', year: '2026', startDate: new Date(2026, 2, 2) },
+            { num: 10, start: 'Mar 9', end: 'Mar 15', year: '2026', startDate: new Date(2026, 2, 9) },
+            { num: 11, start: 'Mar 16', end: 'Mar 22', year: '2026', startDate: new Date(2026, 2, 16) },
+            { num: 12, start: 'Mar 23', end: 'Mar 29', year: '2026', startDate: new Date(2026, 2, 23) },
+            { num: 13, start: 'Mar 30', end: 'Apr 5', year: '2026', startDate: new Date(2026, 2, 30) },
+            { num: 14, start: 'Apr 6', end: 'Apr 12', year: '2026', startDate: new Date(2026, 3, 6) },
+            { num: 15, start: 'Apr 13', end: 'Apr 19', year: '2026', startDate: new Date(2026, 3, 13) },
+            { num: 16, start: 'Apr 20', end: 'Apr 26', year: '2026', startDate: new Date(2026, 3, 20) }
+        ];
+
+        function getTodayInfo() {
+            const today = new Date();
+            const dayName = dayNames[today.getDay()];
+            const monthName = monthNames[today.getMonth()];
+            const date = today.getDate();
+            const year = today.getFullYear();
+            
+            return {
+                dateString: `${year}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(date).padStart(2, '0')}`,
+                displayString: `TODAY: ${dayName}, ${monthName} ${date}, ${year}`
+            };
+        }
+
+        function loadAllData() {
+            const saved = localStorage.getItem('next50_tracking');
+            return saved ? JSON.parse(saved) : {};
+        }
+
+        function saveAllData(data) {
+            localStorage.setItem('next50_tracking', JSON.stringify(data));
+        }
+
+        function getCurrentWeek() {
+            const today = new Date();
+            
+            // Check if we're in one of the official program weeks
+            for (let i = 0; i < weeks.length; i++) {
+                const weekStart = weeks[i].startDate;
+                const weekEnd = new Date(weekStart);
+                weekEnd.setDate(weekEnd.getDate() + 6);
+                
+                if (today >= weekStart && today <= weekEnd) {
+                    return i;
+                }
+            }
+            
+            // If before program starts, return -1 (we'll handle this specially)
+            if (today < weeks[0].startDate) {
+                return -1;
+            }
+            
+            // If after program ends, show last week
+            return weeks.length - 1;
+        }
+
+        function getCurrentWeekInfo() {
+            const weekIndex = getCurrentWeek();
+            const today = new Date();
+            
+            // If before program starts, create a dynamic "current week"
+            if (weekIndex === -1) {
+                // Calculate Monday as start of week (getDay(): 0=Sun, 1=Mon, 2=Tue, etc.)
+                let daysSinceMonday = today.getDay() - 1; // Monday = 0 days since Monday
+                if (daysSinceMonday < 0) daysSinceMonday = 6; // Sunday = 6 days since Monday
+                
+                const weekStart = new Date(today);
+                weekStart.setDate(today.getDate() - daysSinceMonday); // Go back to Monday
+                
+                const weekEnd = new Date(weekStart);
+                weekEnd.setDate(weekStart.getDate() + 6); // Add 6 days for Sunday
+                
+                return {
+                    isPreProgram: true,
+                    num: 'Current',
+                    start: `${monthNames[weekStart.getMonth()]} ${weekStart.getDate()}`,
+                    end: `${monthNames[weekEnd.getMonth()]} ${weekEnd.getDate()}`,
+                    year: weekStart.getFullYear(),
+                    startDate: weekStart
+                };
+            }
+            
+            return {
+                isPreProgram: false,
+                ...weeks[weekIndex]
+            };
+        }
+
+        function updateTodayDisplay() {
+            const todayInfo = getTodayInfo();
+            document.getElementById('todayDate').textContent = todayInfo.displayString;
+            
+            const allData = loadAllData();
+            const todayData = allData[todayInfo.dateString] || {};
+            
+            document.getElementById('today-workout').checked = todayData.workout || false;
+            document.getElementById('today-protein').checked = todayData.protein || false;
+            document.getElementById('today-clean').checked = todayData.clean || false;
+        }
+
+        function toggleCheck(id) {
+            const checkbox = document.getElementById(id);
+            // Checkbox already toggled itself, just save the data
+            
+            const todayInfo = getTodayInfo();
+            const allData = loadAllData();
+            
+            if (!allData[todayInfo.dateString]) {
+                allData[todayInfo.dateString] = {};
+            }
+            
+            const field = id.replace('today-', '');
+            allData[todayInfo.dateString][field] = checkbox.checked;
+            
+            saveAllData(allData);
+            renderPreviousWeek();
+            renderCurrentWeek();
+            renderProgressCounters();
+        }
+
+        function calculateWeekStats(weekNum) {
+            const week = weeks[weekNum];
+            const allData = loadAllData();
+            
+            let workouts = 0, protein = 0, clean = 0;
+            const days = [];
+            
+            for (let i = 0; i < 7; i++) {
+                const date = new Date(week.startDate);
+                date.setDate(date.getDate() + i);
+                const dateString = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
+                
+                const dayData = allData[dateString] || {};
+                days.push({ date: date, data: dayData });
+                
+                if (dayData.workout) workouts++;
+                if (dayData.protein) protein++;
+                if (dayData.clean) clean++;
+            }
+            
+            const fridayDate = new Date(week.startDate);
+            fridayDate.setDate(fridayDate.getDate() + 5);
+            const fridayString = `${fridayDate.getFullYear()}-${String(fridayDate.getMonth() + 1).padStart(2, '0')}-${String(fridayDate.getDate()).padStart(2, '0')}`;
+            const fridayData = allData[fridayString] || {};
+            
+            return {
+                days: days,
+                workouts: workouts,
+                protein: protein,
+                clean: clean,
+                fridayMetrics: {
+                    weight: fridayData.weight || '',
+                    jeans: fridayData.jeans || '',
+                    pushups: fridayData.pushups || '',
+                    plank: fridayData.plank || ''
+                }
+            };
+        }
+
+        function renderPreviousWeek() {
+            const currentWeekInfo = getCurrentWeekInfo();
+            
+            // Get previous week (7 days before current week start)
+            const prevWeekStart = new Date(currentWeekInfo.startDate);
+            prevWeekStart.setDate(prevWeekStart.getDate() - 7);
+            
+            const prevWeekEnd = new Date(prevWeekStart);
+            prevWeekEnd.setDate(prevWeekStart.getDate() + 6);
+            
+            const allData = loadAllData();
+            let workouts = 0, protein = 0, clean = 0;
+            
+            // Calculate stats for previous week
+            for (let i = 0; i < 7; i++) {
+                const date = new Date(prevWeekStart);
+                date.setDate(date.getDate() + i);
+                const dateString = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
+                
+                const dayData = allData[dateString] || {};
+                if (dayData.workout) workouts++;
+                if (dayData.protein) protein++;
+                if (dayData.clean) clean++;
+            }
+            
+            const html = `
+                <div class="week-tracker" style="background: #fafafa; border: 1px solid #f0f0f0;">
+                    <div class="week-header" style="background: #f5f5f5;">
+                        <div class="week-title" style="color: #6e6e73;">Last Week</div>
+                        <div class="week-dates">${monthNames[prevWeekStart.getMonth()]} ${prevWeekStart.getDate()} - ${monthNames[prevWeekEnd.getMonth()]} ${prevWeekEnd.getDate()}, ${prevWeekStart.getFullYear()}</div>
+                    </div>
+                    
+                    <div class="week-summary" style="background: #f9fafb; border: none; margin-top: 0;">
+                        <div class="summary-grid">
+                            <div class="summary-item">
+                                Workouts: <span class="summary-value">${workouts}/7 (${Math.round(workouts/7*100)}%)</span>
+                            </div>
+                            <div class="summary-item">
+                                Protein: <span class="summary-value">${protein}/7 (${Math.round(protein/7*100)}%)</span>
+                            </div>
+                            <div class="summary-item">
+                                Clean eating: <span class="summary-value">${clean}/7 (${Math.round(clean/7*100)}%)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            document.getElementById('previousWeekTracker').innerHTML = html;
+        }
+
+        function renderProgressCounters() {
+            const today = new Date();
+            const allData = loadAllData();
+            
+            // Calculate THIS MONTH stats
+            const monthStart = new Date(today.getFullYear(), today.getMonth(), 1);
+            const monthEnd = new Date(today.getFullYear(), today.getMonth() + 1, 0); // Last day of month
+            const daysInMonth = monthEnd.getDate();
+            
+            let monthWorkouts = 0, monthProtein = 0, monthClean = 0, monthDaysTracked = 0;
+            
+            for (let i = 1; i <= today.getDate(); i++) {
+                const dateString = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(i).padStart(2, '0')}`;
+                const dayData = allData[dateString];
+                
+                if (dayData && (dayData.workout || dayData.protein || dayData.clean)) {
+                    monthDaysTracked++;
+                    if (dayData.workout) monthWorkouts++;
+                    if (dayData.protein) monthProtein++;
+                    if (dayData.clean) monthClean++;
+                }
+            }
+            
+            // Calculate SINCE START stats
+            let totalWorkouts = 0, totalProtein = 0, totalClean = 0, totalDaysTracked = 0;
+            let firstDate = null;
+            
+            const sortedDates = Object.keys(allData).sort();
+            
+            for (const dateString of sortedDates) {
+                const dayData = allData[dateString];
+                if (dayData && (dayData.workout || dayData.protein || dayData.clean)) {
+                    if (!firstDate) firstDate = dateString;
+                    totalDaysTracked++;
+                    if (dayData.workout) totalWorkouts++;
+                    if (dayData.protein) totalProtein++;
+                    if (dayData.clean) totalClean++;
+                }
+            }
+            
+            const monthName = monthNames[today.getMonth()];
+            const startDateFormatted = firstDate ? 
+                `${monthNames[parseInt(firstDate.split('-')[1]) - 1]} ${parseInt(firstDate.split('-')[2])}, ${firstDate.split('-')[0]}` : 
+                'No data yet';
+            
+            const html = `
+                <div class="progress-counters-grid">
+                    <div class="progress-counter-card">
+                        <div class="progress-counter-title">${monthName} ${today.getFullYear()}</div>
+                        <div class="progress-counter-subtitle">Days tracked: ${monthDaysTracked} / ${today.getDate()}</div>
+                        <div class="progress-stat">
+                            <span class="progress-stat-label">Workouts:</span>
+                            <span class="progress-stat-value">${monthWorkouts}/${monthDaysTracked} (${monthDaysTracked > 0 ? Math.round(monthWorkouts/monthDaysTracked*100) : 0}%)</span>
+                        </div>
+                        <div class="progress-stat">
+                            <span class="progress-stat-label">Protein:</span>
+                            <span class="progress-stat-value">${monthProtein}/${monthDaysTracked} (${monthDaysTracked > 0 ? Math.round(monthProtein/monthDaysTracked*100) : 0}%)</span>
+                        </div>
+                        <div class="progress-stat">
+                            <span class="progress-stat-label">Clean eating:</span>
+                            <span class="progress-stat-value">${monthClean}/${monthDaysTracked} (${monthDaysTracked > 0 ? Math.round(monthClean/monthDaysTracked*100) : 0}%)</span>
+                        </div>
+                    </div>
+                    
+                    <div class="progress-counter-card">
+                        <div class="progress-counter-title">Total Progress</div>
+                        <div class="progress-counter-subtitle">Started: ${startDateFormatted}</div>
+                        <div class="progress-stat">
+                            <span class="progress-stat-label">Days tracked:</span>
+                            <span class="progress-stat-value">${totalDaysTracked}</span>
+                        </div>
+                        <div class="progress-stat">
+                            <span class="progress-stat-label">Workouts:</span>
+                            <span class="progress-stat-value">${totalWorkouts}/${totalDaysTracked} (${totalDaysTracked > 0 ? Math.round(totalWorkouts/totalDaysTracked*100) : 0}%)</span>
+                        </div>
+                        <div class="progress-stat">
+                            <span class="progress-stat-label">Protein:</span>
+                            <span class="progress-stat-value">${totalProtein}/${totalDaysTracked} (${totalDaysTracked > 0 ? Math.round(totalProtein/totalDaysTracked*100) : 0}%)</span>
+                        </div>
+                        <div class="progress-stat">
+                            <span class="progress-stat-label">Clean eating:</span>
+                            <span class="progress-stat-value">${totalClean}/${totalDaysTracked} (${totalDaysTracked > 0 ? Math.round(totalClean/totalDaysTracked*100) : 0}%)</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            document.getElementById('progressCounters').innerHTML = html;
+        }
+
+        function renderCurrentWeek() {
+            const week = getCurrentWeekInfo();
+            const allData = loadAllData();
+            
+            let workouts = 0, protein = 0, clean = 0;
+            const daysHTML = [];
+            
+            for (let i = 0; i < 7; i++) {
+                const date = new Date(week.startDate);
+                date.setDate(date.getDate() + i);
+                const dateString = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
+                
+                const dayData = allData[dateString] || {};
+                const dayName = dayNames[date.getDay()];
+                const monthName = monthNames[date.getMonth()];
+                const dateNum = date.getDate();
+                
+                if (dayData.workout) workouts++;
+                if (dayData.protein) protein++;
+                if (dayData.clean) clean++;
+                
+                daysHTML.push(`
+                    <div class="day-row">
+                        <div class="day-name">${dayName}, ${monthName} ${dateNum}</div>
+                        <div class="day-checks">
+                            <div class="day-check">
+                                <input type="checkbox" id="week-day${i}-workout" 
+                                       ${dayData.workout ? 'checked' : ''}
+                                       onchange="updateDayData('${dateString}', 'workout', this.checked)">
+                                <label for="week-day${i}-workout">Morning 7</label>
+                            </div>
+                            <div class="day-check">
+                                <input type="checkbox" id="week-day${i}-protein" 
+                                       ${dayData.protein ? 'checked' : ''}
+                                       onchange="updateDayData('${dateString}', 'protein', this.checked)">
+                                <label for="week-day${i}-protein">Protein</label>
+                            </div>
+                            <div class="day-check">
+                                <input type="checkbox" id="week-day${i}-clean" 
+                                       ${dayData.clean ? 'checked' : ''}
+                                       onchange="updateDayData('${dateString}', 'clean', this.checked)">
+                                <label for="week-day${i}-clean">Clean eating</label>
+                            </div>
+                        </div>
+                    </div>
+                `);
+            }
+            
+            // Get Friday data (day 5)
+            const fridayDate = new Date(week.startDate);
+            fridayDate.setDate(fridayDate.getDate() + 5);
+            const fridayString = `${fridayDate.getFullYear()}-${String(fridayDate.getMonth() + 1).padStart(2, '0')}-${String(fridayDate.getDate()).padStart(2, '0')}`;
+            const fridayData = allData[fridayString] || {};
+            
+            const html = `
+                <div class="week-tracker">
+                    <div class="week-header">
+                        <div class="week-title">Week ${week.num}</div>
+                        <div class="week-dates">${week.start} - ${week.end}, ${week.year}</div>
+                    </div>
+                    
+                    ${daysHTML.join('')}
+                    
+                    <div class="week-summary">
+                        <div class="summary-title">WEEK ${week.num} TOTALS</div>
+                        <div class="summary-grid">
+                            <div class="summary-item">
+                                Workouts: <span class="summary-value">${workouts}/7 (${Math.round(workouts/7*100)}%)</span>
+                            </div>
+                            <div class="summary-item">
+                                Protein: <span class="summary-value">${protein}/7 (${Math.round(protein/7*100)}%)</span>
+                            </div>
+                            <div class="summary-item">
+                                Clean eating: <span class="summary-value">${clean}/7 (${Math.round(clean/7*100)}%)</span>
+                            </div>
+                        </div>
+                        
+                        <div class="friday-metrics">
+                            <div class="metric-input">
+                                <div class="metric-label">Friday Weight (lbs)</div>
+                                <input type="text" class="metric-value" placeholder="lbs" 
+                                       value="${fridayData.weight || ''}"
+                                       onchange="updateFridayMetric('${fridayString}', 'weight', this.value)">
+                            </div>
+                            <div class="metric-input">
+                                <div class="metric-label">Jeans Fit</div>
+                                <input type="text" class="metric-value" placeholder="L/S/T" 
+                                       value="${fridayData.jeans || ''}"
+                                       onchange="updateFridayMetric('${fridayString}', 'jeans', this.value)">
+                            </div>
+                            <div class="metric-input">
+                                <div class="metric-label">Pushups</div>
+                                <input type="text" class="metric-value" placeholder="reps" 
+                                       value="${fridayData.pushups || ''}"
+                                       onchange="updateFridayMetric('${fridayString}', 'pushups', this.value)">
+                            </div>
+                            <div class="metric-input">
+                                <div class="metric-label">Plank (sec)</div>
+                                <input type="text" class="metric-value" placeholder="sec" 
+                                       value="${fridayData.plank || ''}"
+                                       onchange="updateFridayMetric('${fridayString}', 'plank', this.value)">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            document.getElementById('currentWeekTracker').innerHTML = html;
+        }
+
+        function updateDayData(dateString, field, value) {
+            const allData = loadAllData();
+            
+            if (!allData[dateString]) {
+                allData[dateString] = {};
+            }
+            
+            allData[dateString][field] = value;
+            saveAllData(allData);
+            
+            updateTodayDisplay();
+            renderPreviousWeek();
+            renderCurrentWeek();
+            renderProgressCounters();
+        }
+
+        function updateFridayMetric(fridayString, field, value) {
+            const allData = loadAllData();
+            if (!allData[fridayString]) {
+                allData[fridayString] = {};
+            }
+            
+            allData[fridayString][field] = value;
+            saveAllData(allData);
+        }
+
+        function resetAllData() {
+            const confirmed = confirm(
+                "⚠️ RESET ALL TRACKING DATA?\n\n" +
+                "This will permanently delete:\n" +
+                "• All daily check-ins\n" +
+                "• All weekly data\n" +
+                "• All progress counters\n" +
+                "• Friday metrics\n\n" +
+                "This CANNOT be undone!\n\n" +
+                "Are you sure you want to reset?"
+            );
+            
+            if (confirmed) {
+                const doubleCheck = confirm(
+                    "FINAL CONFIRMATION\n\n" +
+                    "You're about to delete ALL your tracking data.\n\n" +
+                    "Click OK to proceed with reset."
+                );
+                
+                if (doubleCheck) {
+                    localStorage.removeItem('next50_tracking');
+                    
+                    // Refresh all displays
+                    updateTodayDisplay();
+                    renderPreviousWeek();
+                    renderCurrentWeek();
+                    renderProgressCounters();
+                    
+                    alert("✓ All data has been reset!\n\nYou're starting fresh. Good luck!");
+                }
+            }
+        }
+
+        function showSection(sectionId) {
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            document.getElementById(sectionId).classList.add('active');
+            
+            const clickedButton = event.target.closest('.nav-btn');
+            if (clickedButton) {
+                clickedButton.classList.add('active');
+            }
+            
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            updateTodayDisplay();
+            renderPreviousWeek();
+            renderCurrentWeek();
+            renderProgressCounters();
+        });
+    </script>
+</body>
+</html>
