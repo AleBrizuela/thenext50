@@ -268,6 +268,26 @@
             border-radius: 12px;
             margin: 14px 0;
         }
+
+        .exercise-demo-svg {
+            display: block;
+            width: 220px;
+            max-width: 100%;
+            height: 110px;
+            background: white;
+            border: 1px solid #f0f0f2;
+            border-radius: 10px;
+            padding: 8px;
+            margin: 0 0 14px 0;
+        }
+
+        .exercise-demo-svg .body { stroke: #4b5563; stroke-width: 2.5; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+        .exercise-demo-svg .working { stroke: #10b981; stroke-width: 4; fill: none; stroke-linecap: round; }
+        .exercise-demo-svg .head { fill: none; stroke: #4b5563; stroke-width: 2.5; }
+        .exercise-demo-svg .equipment { fill: #1d1d1f; }
+        .exercise-demo-svg .floor { stroke: #d1d5db; stroke-width: 2; }
+        .exercise-demo-svg .arrow { stroke: #10b981; stroke-width: 2; fill: #10b981; }
+        .exercise-demo-svg .band { stroke: #10b981; stroke-width: 2; fill: none; stroke-dasharray: 3 2; }
         
         .badge {
             display: inline-block;
@@ -787,6 +807,13 @@
                     <p class="countdown-date" style="font-size: 32px;">June 14, 2026</p>
                     <p style="margin-top: 12px; font-size: 14px; opacity: 0.88; color: white;">7-week training plan in progress · tap to view</p>
                 </div>
+            </div>
+
+            <div class="card" style="background: linear-gradient(135deg, #10b981 0%, #047857 100%); color: white; cursor: pointer;" onclick="showSection('camino')">
+                <div style="font-size: 12px; font-weight: 600; opacity: 0.9; letter-spacing: 1px; text-transform: uppercase;" id="todaysDayLabel">Today</div>
+                <h2 id="todaysWorkoutTitle" style="color: white; font-size: 30px; margin: 8px 0 12px; letter-spacing: -0.02em;">Today's Workout</h2>
+                <p id="todaysWorkoutDesc" style="color: white; opacity: 0.95; font-size: 15px; line-height: 1.55;">Loading...</p>
+                <div style="margin-top: 18px; display: inline-block; background: white; color: #047857; padding: 10px 22px; border-radius: 24px; font-weight: 600; font-size: 14px;">Open full plan →</div>
             </div>
 
             <!-- TODAY TRACKER -->
@@ -1385,28 +1412,131 @@
                 <p style="color: #86868b; font-size: 14px; margin-bottom: 16px;">Monday · 35 min · build the legs that climb the Pyrenees</p>
 
                 <div class="metric-card">
+                    <svg class="exercise-demo-svg" viewBox="0 0 220 100" xmlns="http://www.w3.org/2000/svg">
+                        <line x1="10" y1="92" x2="210" y2="92" class="floor"/>
+                        <circle cx="70" cy="22" r="6" class="head"/>
+                        <line x1="70" y1="28" x2="70" y2="55" class="body"/>
+                        <line x1="70" y1="35" x2="58" y2="48" class="body"/>
+                        <line x1="70" y1="35" x2="82" y2="48" class="body"/>
+                        <line x1="70" y1="55" x2="62" y2="78" class="working"/>
+                        <line x1="70" y1="55" x2="78" y2="78" class="working"/>
+                        <line x1="62" y1="78" x2="62" y2="92" class="body"/>
+                        <line x1="78" y1="78" x2="78" y2="92" class="body"/>
+                        <circle cx="150" cy="22" r="6" class="head"/>
+                        <line x1="150" y1="28" x2="150" y2="55" class="body"/>
+                        <line x1="150" y1="35" x2="138" y2="48" class="body"/>
+                        <line x1="150" y1="35" x2="162" y2="48" class="body"/>
+                        <line x1="150" y1="55" x2="142" y2="78" class="working"/>
+                        <line x1="150" y1="55" x2="170" y2="78" class="working"/>
+                        <line x1="142" y1="78" x2="142" y2="92" class="body"/>
+                        <line x1="170" y1="78" x2="174" y2="92" class="body"/>
+                        <path d="M 78 90 Q 110 86 142 90" class="band"/>
+                        <text x="110" y="14" font-size="9" fill="#10b981" text-anchor="middle" font-weight="600">BAND AT ANKLES</text>
+                    </svg>
                     <h4 style="margin-top: 0;">1. Booty band warm-up · 2 min</h4>
-                    <p style="margin-top: 6px;">Lateral walks (15 each side), monster walks (15 each side), bodyweight glute bridges (15 reps).</p>
+                    <p style="margin-top: 6px;"><strong>Lateral walks:</strong> band around ankles, knees soft, take 15 small steps to the right then 15 to the left. Tension stays on the band the whole time. <strong>Monster walks:</strong> band around ankles, walk forward in athletic stance, knees out, 15 steps. <strong>Glute bridges:</strong> lying on back, knees bent, lift hips up squeezing glutes, 15 reps.</p>
                 </div>
+
                 <div class="metric-card">
+                    <svg class="exercise-demo-svg" viewBox="0 0 220 100" xmlns="http://www.w3.org/2000/svg">
+                        <line x1="10" y1="92" x2="210" y2="92" class="floor"/>
+                        <circle cx="110" cy="20" r="6" class="head"/>
+                        <line x1="110" y1="26" x2="110" y2="50" class="body"/>
+                        <line x1="110" y1="32" x2="100" y2="42" class="body"/>
+                        <line x1="110" y1="32" x2="120" y2="42" class="body"/>
+                        <rect x="98" y="40" width="24" height="6" class="equipment" rx="1"/>
+                        <line x1="110" y1="50" x2="92" y2="68" class="working"/>
+                        <line x1="110" y1="50" x2="128" y2="68" class="working"/>
+                        <line x1="92" y1="68" x2="92" y2="92" class="body"/>
+                        <line x1="128" y1="68" x2="128" y2="92" class="body"/>
+                        <line x1="85" y1="92" x2="100" y2="92" class="body" stroke-width="3"/>
+                        <line x1="120" y1="92" x2="135" y2="92" class="body" stroke-width="3"/>
+                        <text x="155" y="50" font-size="9" fill="#10b981" font-weight="600">QUADS +</text>
+                        <text x="155" y="62" font-size="9" fill="#10b981" font-weight="600">GLUTES</text>
+                    </svg>
                     <h4 style="margin-top: 0;">2. Goblet squat · 4 sets × 10 reps</h4>
-                    <p style="margin-top: 6px;">One dumbbell at chest. Start at <strong>30 lbs</strong>. Progress to 40+ by Week 5. Knee tracks over 2nd toe. Push through heel.</p>
+                    <p style="margin-top: 6px;"><strong>Setup:</strong> hold one dumbbell vertically at chest, both hands cupping the top end. Feet shoulder-width, toes slightly out. <strong>Movement:</strong> sit hips back and down like sitting in a chair. Knees track over second toe (don't cave inward). Go as deep as your hips allow with a flat back. Drive up through your heels. <strong>Start at 30 lbs</strong>, progress to 40+ by Week 5.</p>
                 </div>
+
                 <div class="metric-card">
+                    <svg class="exercise-demo-svg" viewBox="0 0 220 100" xmlns="http://www.w3.org/2000/svg">
+                        <line x1="10" y1="92" x2="210" y2="92" class="floor"/>
+                        <rect x="135" y="68" width="60" height="8" class="equipment" rx="1" fill="#9ca3af"/>
+                        <line x1="135" y1="76" x2="135" y2="92" class="body" stroke="#9ca3af"/>
+                        <line x1="195" y1="76" x2="195" y2="92" class="body" stroke="#9ca3af"/>
+                        <circle cx="100" cy="22" r="6" class="head"/>
+                        <line x1="100" y1="28" x2="100" y2="52" class="body"/>
+                        <line x1="100" y1="36" x2="92" y2="58" class="body"/>
+                        <line x1="100" y1="36" x2="108" y2="58" class="body"/>
+                        <rect x="85" y="56" width="6" height="10" class="equipment" rx="1"/>
+                        <rect x="106" y="56" width="6" height="10" class="equipment" rx="1"/>
+                        <line x1="100" y1="52" x2="100" y2="78" class="working"/>
+                        <line x1="100" y1="78" x2="100" y2="92" class="body"/>
+                        <line x1="100" y1="52" x2="135" y2="68" class="working"/>
+                        <text x="65" y="14" font-size="9" fill="#10b981" font-weight="600">FRONT LEG</text>
+                        <text x="155" y="60" font-size="9" fill="#9ca3af" font-weight="600">BENCH</text>
+                    </svg>
                     <h4 style="margin-top: 0;">3. Bulgarian split squat · 3 × 8 each leg, LEFT FIRST</h4>
-                    <p style="margin-top: 6px;">Rear foot on bench, dumbbells at sides. Start at <strong>15 lbs each hand</strong>. Closes the left/right gap from the scan.</p>
+                    <p style="margin-top: 6px;"><strong>Setup:</strong> stand 2-3 feet in front of bench, place top of REAR foot on bench. Dumbbells at sides. <strong>Movement:</strong> bend front knee, lower straight down (don't lean forward). Front knee over front foot. Stop when back knee almost kisses the floor. Drive up through front heel. <strong>Why it matters:</strong> isolates one leg at a time, closes the left/right gap from your scan. Start at <strong>15 lbs each hand</strong>. Always start with LEFT.</p>
                 </div>
+
                 <div class="metric-card">
+                    <svg class="exercise-demo-svg" viewBox="0 0 220 100" xmlns="http://www.w3.org/2000/svg">
+                        <line x1="10" y1="92" x2="210" y2="92" class="floor"/>
+                        <rect x="100" y="60" width="55" height="32" class="equipment" rx="1" fill="#9ca3af"/>
+                        <circle cx="120" cy="14" r="6" class="head"/>
+                        <line x1="120" y1="20" x2="120" y2="42" class="body"/>
+                        <line x1="120" y1="28" x2="110" y2="42" class="body"/>
+                        <line x1="120" y1="28" x2="130" y2="42" class="body"/>
+                        <rect x="103" y="40" width="6" height="10" class="equipment" rx="1"/>
+                        <rect x="131" y="40" width="6" height="10" class="equipment" rx="1"/>
+                        <line x1="120" y1="42" x2="115" y2="60" class="working"/>
+                        <line x1="115" y1="60" x2="115" y2="80" class="body"/>
+                        <line x1="120" y1="42" x2="100" y2="78" class="body"/>
+                        <line x1="100" y1="78" x2="100" y2="92" class="body"/>
+                        <text x="60" y="50" font-size="9" fill="#10b981" font-weight="600">TOP LEG</text>
+                        <text x="60" y="62" font-size="9" fill="#10b981" font-weight="600">DRIVES</text>
+                    </svg>
                     <h4 style="margin-top: 0;">4. Dumbbell step-up to bench · 3 × 10 each leg</h4>
-                    <p style="margin-top: 6px;">Drive up through the bench leg. Don't push off the trailing foot. Start at <strong>15 lbs each hand</strong>.</p>
+                    <p style="margin-top: 6px;"><strong>Setup:</strong> stand facing bench, dumbbells at sides. <strong>Movement:</strong> place WHOLE foot on bench (not just toe). Drive up through that heel until you're standing on the bench. Step back down. Trailing foot should NOT push off the floor — let the working leg do all the work. Mimics climbing stairs and hill steps. Start at <strong>15 lbs each hand</strong>.</p>
                 </div>
+
                 <div class="metric-card">
+                    <svg class="exercise-demo-svg" viewBox="0 0 220 100" xmlns="http://www.w3.org/2000/svg">
+                        <line x1="10" y1="92" x2="210" y2="92" class="floor"/>
+                        <line x1="50" y1="20" x2="50" y2="92" stroke="#9ca3af" stroke-width="2"/>
+                        <circle cx="110" cy="18" r="6" class="head"/>
+                        <line x1="110" y1="24" x2="110" y2="55" class="body"/>
+                        <line x1="110" y1="32" x2="62" y2="36" class="body"/>
+                        <line x1="110" y1="32" x2="125" y2="50" class="body"/>
+                        <rect x="120" y="48" width="6" height="10" class="equipment" rx="1"/>
+                        <line x1="110" y1="55" x2="110" y2="80" class="body"/>
+                        <line x1="110" y1="55" x2="105" y2="78" class="body"/>
+                        <line x1="105" y1="78" x2="105" y2="86" class="body"/>
+                        <line x1="110" y1="80" x2="110" y2="86" class="working"/>
+                        <line x1="105" y1="86" x2="98" y2="84" class="body"/>
+                        <line x1="110" y1="86" x2="118" y2="80" class="working"/>
+                        <text x="155" y="50" font-size="9" fill="#10b981" font-weight="600">CALVES</text>
+                        <text x="155" y="62" font-size="9" fill="#10b981" font-weight="600">UP HIGH</text>
+                    </svg>
                     <h4 style="margin-top: 0;">5. Single-leg calf raise · 3 × 15 each side</h4>
-                    <p style="margin-top: 6px;">Holding one dumbbell, hand on wall for balance. Calves are the silent hero of long-distance hiking. Start at <strong>20 lbs</strong>.</p>
+                    <p style="margin-top: 6px;"><strong>Setup:</strong> stand on one leg, hold one dumbbell in same-side hand, opposite hand on wall for balance. <strong>Movement:</strong> rise up onto the ball of your foot as HIGH as you can. Pause at top. Lower slow with control (3 seconds down). <strong>Why it matters:</strong> calves are the silent hero of long-distance hiking. Weak calves on the Camino = sore everything else. Start at <strong>20 lbs</strong>.</p>
                 </div>
+
                 <div class="metric-card">
+                    <svg class="exercise-demo-svg" viewBox="0 0 220 100" xmlns="http://www.w3.org/2000/svg">
+                        <line x1="10" y1="92" x2="210" y2="92" class="floor"/>
+                        <circle cx="55" cy="58" r="6" class="head"/>
+                        <line x1="61" y1="58" x2="180" y2="58" class="working"/>
+                        <line x1="48" y1="58" x2="48" y2="80" class="body"/>
+                        <line x1="48" y1="80" x2="62" y2="80" class="body"/>
+                        <line x1="180" y1="58" x2="190" y2="80" class="body"/>
+                        <line x1="190" y1="80" x2="200" y2="80" class="body"/>
+                        <text x="120" y="40" font-size="9" fill="#10b981" font-weight="600" text-anchor="middle">STRAIGHT LINE</text>
+                        <text x="120" y="50" font-size="9" fill="#10b981" font-weight="600" text-anchor="middle">SHOULDERS TO HEELS</text>
+                    </svg>
                     <h4 style="margin-top: 0;">6. Plank · 3 × 45 seconds</h4>
-                    <p style="margin-top: 6px;">A strong plank holds the backpack steady on every step.</p>
+                    <p style="margin-top: 6px;"><strong>Setup:</strong> on forearms and toes. Elbows directly under shoulders. <strong>Movement:</strong> hold a straight line from head to heels. Squeeze glutes, brace abs (like someone's about to punch your stomach), don't let hips sag or pike up. Breathe normally. <strong>Why it matters:</strong> a strong plank holds the backpack steady on every step of the Camino.</p>
                 </div>
             </div>
 
@@ -1416,31 +1546,114 @@
 
                 <div class="metric-card">
                     <h4 style="margin-top: 0;">1. Booty band warm-up · 2 min</h4>
-                    <p style="margin-top: 6px;">Same as Workout A.</p>
+                    <p style="margin-top: 6px;">Same routine as Workout A: lateral walks, monster walks, glute bridges. See Workout A for full description and diagram.</p>
                 </div>
+
                 <div class="metric-card">
+                    <svg class="exercise-demo-svg" viewBox="0 0 220 100" xmlns="http://www.w3.org/2000/svg">
+                        <line x1="10" y1="92" x2="210" y2="92" class="floor"/>
+                        <circle cx="80" cy="32" r="6" class="head"/>
+                        <line x1="80" y1="38" x2="125" y2="48" class="working"/>
+                        <line x1="125" y1="48" x2="125" y2="68" class="body"/>
+                        <line x1="125" y1="68" x2="120" y2="92" class="body"/>
+                        <line x1="125" y1="48" x2="115" y2="50" class="body"/>
+                        <line x1="115" y1="50" x2="120" y2="78" class="body"/>
+                        <rect x="116" y="76" width="8" height="10" class="equipment" rx="1"/>
+                        <text x="50" y="20" font-size="9" fill="#10b981" font-weight="600">FLAT BACK</text>
+                        <text x="155" y="50" font-size="9" fill="#10b981" font-weight="600">HAMSTRINGS</text>
+                        <text x="155" y="62" font-size="9" fill="#10b981" font-weight="600">+ GLUTES</text>
+                    </svg>
                     <h4 style="margin-top: 0;">2. Romanian deadlift · 4 × 10</h4>
-                    <p style="margin-top: 6px;">Dumbbells at sides, hinge at hips, knees soft. Start at <strong>25 lbs each hand</strong>, progress to 35+. Builds the hamstring/glute/lower-back chain that protects you on downhills.</p>
+                    <p style="margin-top: 6px;"><strong>Setup:</strong> stand tall, dumbbells in front of thighs, slight bend in knees. <strong>Movement:</strong> push hips BACK (not down) and let dumbbells slide down the front of your legs. Back stays flat (not rounded). Stop when you feel a stretch in your hamstrings, usually mid-shin. Drive hips forward to stand. <strong>Common mistake:</strong> bending the knees more (that's a squat, not a deadlift). Start at <strong>25 lbs each hand</strong>, progress to 35+.</p>
                 </div>
+
                 <div class="metric-card">
+                    <svg class="exercise-demo-svg" viewBox="0 0 220 100" xmlns="http://www.w3.org/2000/svg">
+                        <line x1="10" y1="92" x2="210" y2="92" class="floor"/>
+                        <rect x="20" y="42" width="55" height="8" class="equipment" rx="1" fill="#9ca3af"/>
+                        <line x1="20" y1="50" x2="20" y2="92" class="body" stroke="#9ca3af"/>
+                        <line x1="75" y1="50" x2="75" y2="92" class="body" stroke="#9ca3af"/>
+                        <circle cx="50" cy="36" r="6" class="head"/>
+                        <line x1="56" y1="40" x2="135" y2="50" class="body"/>
+                        <rect x="125" y="44" width="20" height="8" class="equipment" rx="1"/>
+                        <line x1="135" y1="50" x2="160" y2="80" class="working"/>
+                        <line x1="160" y1="80" x2="170" y2="92" class="body"/>
+                        <text x="105" y="36" font-size="9" fill="#10b981" font-weight="600">HIPS UP</text>
+                        <text x="155" y="68" font-size="9" fill="#10b981" font-weight="600">GLUTES</text>
+                    </svg>
                     <h4 style="margin-top: 0;">3. Hip thrust · 4 × 12</h4>
-                    <p style="margin-top: 6px;">Shoulders on bench edge, dumbbell on hips. Start at <strong>30 lbs</strong>, progress aggressively (hips tolerate heavy loads well). Strong glutes = uphill power.</p>
+                    <p style="margin-top: 6px;"><strong>Setup:</strong> sit on floor with shoulder blades against the long edge of bench, knees bent, feet flat on floor about hip-width. Place dumbbell across hips (use a towel under it for comfort). <strong>Movement:</strong> drive hips UP until thighs are parallel to floor. Squeeze glutes hard at top. Lower with control. <strong>Why it matters:</strong> the most direct glute exercise there is. Strong glutes power every uphill step. Start at <strong>30 lbs</strong>, progress aggressively (hips tolerate heavy load).</p>
                 </div>
+
                 <div class="metric-card">
+                    <svg class="exercise-demo-svg" viewBox="0 0 220 100" xmlns="http://www.w3.org/2000/svg">
+                        <line x1="10" y1="92" x2="210" y2="92" class="floor"/>
+                        <circle cx="80" cy="32" r="6" class="head"/>
+                        <line x1="80" y1="38" x2="115" y2="50" class="body"/>
+                        <line x1="115" y1="50" x2="115" y2="80" class="working"/>
+                        <line x1="115" y1="80" x2="115" y2="92" class="body"/>
+                        <line x1="115" y1="50" x2="160" y2="42" class="working"/>
+                        <line x1="160" y1="42" x2="180" y2="48" class="body"/>
+                        <line x1="115" y1="50" x2="105" y2="62" class="body"/>
+                        <rect x="100" y="60" width="6" height="10" class="equipment" rx="1"/>
+                        <text x="50" y="20" font-size="9" fill="#10b981" font-weight="600">BACK LEG UP</text>
+                        <text x="155" y="78" font-size="9" fill="#10b981" font-weight="600">STAND LEG</text>
+                    </svg>
                     <h4 style="margin-top: 0;">4. Single-leg Romanian deadlift · 3 × 8 each, LEFT FIRST</h4>
-                    <p style="margin-top: 6px;">One dumbbell in opposite hand. Start at <strong>20 lbs</strong>. Single-leg balance under load is exactly what stepping over rocks demands.</p>
+                    <p style="margin-top: 6px;"><strong>Setup:</strong> stand on one leg (left first), hold one dumbbell in OPPOSITE hand. <strong>Movement:</strong> hinge at the hip, send the lifted leg straight back behind you, like a teeter-totter. Dumbbell lowers toward the floor while the back leg rises. Back stays flat, hips stay square (don't twist open). Drive standing leg's heel into the ground to come back up. <strong>Why it matters:</strong> single-leg balance under load is exactly what stepping over rocks on the Camino demands. Start at <strong>20 lbs</strong>.</p>
                 </div>
+
                 <div class="metric-card">
+                    <svg class="exercise-demo-svg" viewBox="0 0 220 100" xmlns="http://www.w3.org/2000/svg">
+                        <line x1="10" y1="92" x2="210" y2="92" class="floor"/>
+                        <circle cx="50" cy="50" r="6" class="head"/>
+                        <line x1="56" y1="50" x2="180" y2="58" class="body"/>
+                        <line x1="50" y1="56" x2="46" y2="78" class="body"/>
+                        <line x1="46" y1="78" x2="58" y2="78" class="body"/>
+                        <line x1="180" y1="58" x2="180" y2="78" class="body"/>
+                        <line x1="180" y1="78" x2="190" y2="78" class="body"/>
+                        <line x1="180" y1="58" x2="200" y2="35" class="working"/>
+                        <text x="170" y="22" font-size="9" fill="#10b981" font-weight="600">TOP LEG UP</text>
+                        <text x="105" y="40" font-size="9" fill="#10b981" font-weight="600" text-anchor="middle">SIDE HIP</text>
+                    </svg>
                     <h4 style="margin-top: 0;">5. Side plank with leg lift · 3 × 10 each side</h4>
-                    <p style="margin-top: 6px;">Hits the lateral hip stabilizers (gluteus medius). Weak side hips are the #1 cause of knee pain on long hikes.</p>
+                    <p style="margin-top: 6px;"><strong>Setup:</strong> lie on your side, prop up on one forearm (elbow under shoulder), feet stacked. Lift hips so body is a straight line. <strong>Movement:</strong> from the side plank position, lift the top leg up about 12 inches, lower slowly. Keep hips up the whole time. <strong>Why it matters:</strong> targets gluteus medius (lateral hip stabilizer). Weak side hips = the #1 cause of knee pain on long hikes. Don't skip this.</p>
                 </div>
+
                 <div class="metric-card">
+                    <svg class="exercise-demo-svg" viewBox="0 0 220 100" xmlns="http://www.w3.org/2000/svg">
+                        <line x1="10" y1="92" x2="210" y2="92" class="floor"/>
+                        <circle cx="60" cy="55" r="6" class="head"/>
+                        <line x1="66" y1="55" x2="140" y2="58" class="body"/>
+                        <line x1="60" y1="61" x2="55" y2="80" class="body"/>
+                        <line x1="55" y1="80" x2="65" y2="80" class="body"/>
+                        <line x1="80" y1="58" x2="80" y2="78" class="body"/>
+                        <line x1="80" y1="78" x2="78" y2="92" class="body"/>
+                        <line x1="120" y1="58" x2="125" y2="78" class="body"/>
+                        <line x1="125" y1="78" x2="123" y2="92" class="body"/>
+                        <line x1="140" y1="58" x2="195" y2="40" class="working"/>
+                        <line x1="60" y1="55" x2="20" y2="38" class="working"/>
+                        <text x="105" y="22" font-size="9" fill="#10b981" font-weight="600" text-anchor="middle">OPPOSITE ARM + LEG</text>
+                    </svg>
                     <h4 style="margin-top: 0;">6. Bird dog · 3 × 10 each side</h4>
-                    <p style="margin-top: 6px;">Slow, controlled. Anti-rotation core for backpack stability.</p>
+                    <p style="margin-top: 6px;"><strong>Setup:</strong> on hands and knees. Hands under shoulders, knees under hips. Flat back like a tabletop. <strong>Movement:</strong> extend OPPOSITE arm and leg simultaneously (right arm + left leg, or left arm + right leg). Hold for 2 seconds at full extension. Don't let your back arch or hips rotate. Return slowly, repeat on the other side. <strong>Why it matters:</strong> trains anti-rotation core, which is exactly what holds the backpack steady when you stumble.</p>
                 </div>
+
                 <div class="metric-card">
+                    <svg class="exercise-demo-svg" viewBox="0 0 220 100" xmlns="http://www.w3.org/2000/svg">
+                        <line x1="10" y1="92" x2="210" y2="92" class="floor"/>
+                        <circle cx="40" cy="65" r="6" class="head" transform="rotate(90 40 65)"/>
+                        <line x1="46" y1="65" x2="160" y2="65" class="body"/>
+                        <line x1="60" y1="65" x2="40" y2="35" class="body"/>
+                        <line x1="100" y1="65" x2="120" y2="35" class="working"/>
+                        <line x1="160" y1="65" x2="160" y2="40" class="body"/>
+                        <line x1="160" y1="65" x2="180" y2="80" class="working"/>
+                        <line x1="180" y1="80" x2="195" y2="80" class="body"/>
+                        <text x="105" y="22" font-size="9" fill="#10b981" font-weight="600" text-anchor="middle">OPPOSITE LIMBS</text>
+                        <text x="105" y="32" font-size="9" fill="#10b981" font-weight="600" text-anchor="middle">LOWER TOWARD FLOOR</text>
+                    </svg>
                     <h4 style="margin-top: 0;">7. Dead bug · 3 × 10</h4>
-                    <p style="margin-top: 6px;">Lying on back, opposite arm/leg lower. Deep core, lower back protection.</p>
+                    <p style="margin-top: 6px;"><strong>Setup:</strong> lie on back, arms straight up toward ceiling, knees bent at 90° in tabletop position. Press lower back into floor. <strong>Movement:</strong> slowly lower OPPOSITE arm and leg toward the floor (right arm overhead + left leg straight out). Don't let your lower back arch off the floor. Return, switch sides. <strong>Why it matters:</strong> teaches deep core to brace under limb movement. Protects the lower back when carrying weight all day.</p>
                 </div>
             </div>
 
@@ -1450,30 +1663,126 @@
 
                 <div class="metric-card">
                     <h4 style="margin-top: 0;">1. Booty band warm-up · 2 min</h4>
+                    <p style="margin-top: 6px;">Same as Workouts A and B. See Workout A for the diagram.</p>
                 </div>
+
                 <div class="metric-card">
+                    <svg class="exercise-demo-svg" viewBox="0 0 220 100" xmlns="http://www.w3.org/2000/svg">
+                        <line x1="10" y1="92" x2="210" y2="92" class="floor"/>
+                        <circle cx="100" cy="20" r="6" class="head"/>
+                        <line x1="100" y1="26" x2="100" y2="50" class="body"/>
+                        <line x1="100" y1="34" x2="88" y2="50" class="body"/>
+                        <line x1="100" y1="34" x2="112" y2="50" class="body"/>
+                        <rect x="82" y="48" width="6" height="10" class="equipment" rx="1"/>
+                        <rect x="112" y="48" width="6" height="10" class="equipment" rx="1"/>
+                        <line x1="100" y1="50" x2="100" y2="78" class="working"/>
+                        <line x1="100" y1="78" x2="100" y2="92" class="body"/>
+                        <line x1="100" y1="50" x2="145" y2="65" class="body"/>
+                        <line x1="145" y1="65" x2="160" y2="88" class="body"/>
+                        <text x="60" y="78" font-size="9" fill="#10b981" font-weight="600">FRONT</text>
+                        <text x="155" y="50" font-size="9" fill="#9ca3af" font-weight="600">BACK</text>
+                    </svg>
                     <h4 style="margin-top: 0;">2. Reverse lunge · 3 × 10 each leg, LEFT FIRST</h4>
-                    <p style="margin-top: 6px;">Dumbbells at sides. Start at <strong>15 lbs each hand</strong>. Reverse (not forward) is gentler on knees.</p>
+                    <p style="margin-top: 6px;"><strong>Setup:</strong> stand tall, dumbbells at sides. <strong>Movement:</strong> step BACKWARD with one foot, lower until back knee almost touches floor. Front knee stays over front foot. Drive through front heel to step back to standing. <strong>Why reverse instead of forward:</strong> reverse lunges are gentler on knees because you control the descent rather than letting momentum drive you forward. Better for your ankle hardware. Start at <strong>15 lbs each hand</strong>.</p>
                 </div>
+
                 <div class="metric-card">
+                    <svg class="exercise-demo-svg" viewBox="0 0 220 100" xmlns="http://www.w3.org/2000/svg">
+                        <line x1="10" y1="92" x2="210" y2="92" class="floor"/>
+                        <circle cx="120" cy="20" r="6" class="head"/>
+                        <line x1="120" y1="26" x2="120" y2="50" class="body"/>
+                        <line x1="120" y1="34" x2="108" y2="50" class="body"/>
+                        <line x1="120" y1="34" x2="132" y2="50" class="body"/>
+                        <rect x="102" y="48" width="6" height="10" class="equipment" rx="1"/>
+                        <rect x="132" y="48" width="6" height="10" class="equipment" rx="1"/>
+                        <line x1="120" y1="50" x2="155" y2="80" class="working"/>
+                        <line x1="155" y1="80" x2="155" y2="92" class="body"/>
+                        <line x1="120" y1="50" x2="80" y2="78" class="body"/>
+                        <line x1="80" y1="78" x2="80" y2="92" class="body"/>
+                        <path d="M 30 50 L 50 50 M 45 45 L 50 50 L 45 55" class="arrow" fill="none"/>
+                        <text x="40" y="38" font-size="9" fill="#10b981" font-weight="600">MOVE FORWARD</text>
+                    </svg>
                     <h4 style="margin-top: 0;">3. Walking lunge · 3 × 10 each leg</h4>
-                    <p style="margin-top: 6px;">Dumbbells at sides. Mimics the actual gait pattern of hiking.</p>
+                    <p style="margin-top: 6px;"><strong>Setup:</strong> stand tall, dumbbells at sides. Need clear space (10-15 feet). <strong>Movement:</strong> step FORWARD into a lunge, lower until back knee nearly touches floor, then drive through front heel and bring back foot forward INTO the next lunge. Keep moving forward. <strong>Why it matters:</strong> mimics the actual gait pattern of hiking, with load. Tests balance under fatigue.</p>
                 </div>
+
                 <div class="metric-card">
+                    <svg class="exercise-demo-svg" viewBox="0 0 220 100" xmlns="http://www.w3.org/2000/svg">
+                        <line x1="10" y1="92" x2="210" y2="92" class="floor"/>
+                        <rect x="100" y="60" width="55" height="32" class="equipment" rx="1" fill="#9ca3af"/>
+                        <circle cx="120" cy="14" r="6" class="head"/>
+                        <line x1="120" y1="20" x2="120" y2="42" class="body"/>
+                        <line x1="120" y1="28" x2="110" y2="42" class="body"/>
+                        <line x1="120" y1="28" x2="130" y2="42" class="body"/>
+                        <rect x="103" y="40" width="6" height="10" class="equipment" rx="1"/>
+                        <rect x="131" y="40" width="6" height="10" class="equipment" rx="1"/>
+                        <line x1="120" y1="42" x2="115" y2="60" class="working"/>
+                        <line x1="115" y1="60" x2="115" y2="80" class="body"/>
+                        <line x1="120" y1="42" x2="100" y2="78" class="body"/>
+                        <line x1="100" y1="78" x2="100" y2="92" class="body"/>
+                        <text x="60" y="50" font-size="9" fill="#10b981" font-weight="600">FAST PACE</text>
+                        <text x="60" y="62" font-size="9" fill="#10b981" font-weight="600">15 REPS</text>
+                    </svg>
                     <h4 style="margin-top: 0;">4. Box step-up endurance set · 3 × 15 each leg</h4>
-                    <p style="margin-top: 6px;">Lighter dumbbells, faster pace. Trains the legs to keep working when fatigued.</p>
+                    <p style="margin-top: 6px;"><strong>Setup:</strong> same as Workout A step-ups, but use LIGHTER dumbbells (5-10 lbs each) for higher reps. <strong>Movement:</strong> faster cadence, 15 reps per leg. By rep 12 your legs should burn. <strong>Why it matters:</strong> trains the legs to keep working when fatigued, which is exactly what hour 4 of a Camino day feels like.</p>
                 </div>
+
                 <div class="metric-card">
+                    <svg class="exercise-demo-svg" viewBox="0 0 220 100" xmlns="http://www.w3.org/2000/svg">
+                        <line x1="10" y1="92" x2="210" y2="92" class="floor"/>
+                        <ellipse cx="110" cy="86" rx="40" ry="6" fill="#9ca3af"/>
+                        <line x1="70" y1="86" x2="80" y2="92" stroke="#9ca3af" stroke-width="2"/>
+                        <line x1="150" y1="86" x2="140" y2="92" stroke="#9ca3af" stroke-width="2"/>
+                        <circle cx="110" cy="20" r="6" class="head"/>
+                        <line x1="110" y1="26" x2="110" y2="55" class="body"/>
+                        <line x1="110" y1="34" x2="98" y2="48" class="body"/>
+                        <line x1="110" y1="34" x2="122" y2="48" class="body"/>
+                        <line x1="110" y1="55" x2="105" y2="78" class="working"/>
+                        <line x1="110" y1="55" x2="115" y2="78" class="working"/>
+                        <line x1="105" y1="78" x2="100" y2="84" class="body"/>
+                        <line x1="115" y1="78" x2="120" y2="84" class="body"/>
+                        <text x="55" y="50" font-size="9" fill="#10b981" font-weight="600">BALANCE +</text>
+                        <text x="55" y="62" font-size="9" fill="#10b981" font-weight="600">CALVES</text>
+                    </svg>
                     <h4 style="margin-top: 0;">5. Calf raise on balance board · 3 × 20</h4>
-                    <p style="margin-top: 6px;">Bodyweight only. Trains ankle stability + calf endurance simultaneously. Critical for ankle hardware protection.</p>
+                    <p style="margin-top: 6px;"><strong>Setup:</strong> stand on balance board, hands free or lightly touching wall. <strong>Movement:</strong> rise up onto the balls of your feet (calf raise) while balancing. Lower slowly. The board wobbles, you stabilize, calves work. <strong>Why it matters:</strong> trains ankle stability AND calf endurance at the same time. Critical for ankle hardware protection on uneven Camino terrain. Bodyweight only — the balance is the load.</p>
                 </div>
+
                 <div class="metric-card">
+                    <svg class="exercise-demo-svg" viewBox="0 0 220 100" xmlns="http://www.w3.org/2000/svg">
+                        <line x1="10" y1="92" x2="210" y2="92" class="floor"/>
+                        <line x1="200" y1="20" x2="200" y2="92" stroke="#9ca3af" stroke-width="3"/>
+                        <circle cx="100" cy="22" r="6" class="head"/>
+                        <line x1="100" y1="28" x2="100" y2="62" class="working"/>
+                        <line x1="100" y1="38" x2="135" y2="48" class="body"/>
+                        <line x1="135" y1="48" x2="155" y2="48" class="body"/>
+                        <path d="M 155 42 Q 175 48 195 48" class="band"/>
+                        <line x1="100" y1="62" x2="92" y2="92" class="body"/>
+                        <line x1="100" y1="62" x2="108" y2="92" class="body"/>
+                        <text x="55" y="20" font-size="9" fill="#10b981" font-weight="600">RESIST ROTATION</text>
+                        <text x="135" y="36" font-size="9" fill="#10b981" font-weight="600">PUSH OUT</text>
+                    </svg>
                     <h4 style="margin-top: 0;">6. Pallof press with band · 3 × 10 each side</h4>
-                    <p style="margin-top: 6px;">Band anchored to door (use the door anchor from the pilates kit). Anti-rotation core under load.</p>
+                    <p style="margin-top: 6px;"><strong>Setup:</strong> attach band to door (use door anchor from the pilates kit) at chest height. Stand sideways to door, hold band handle with both hands at chest. Step away until there's tension. <strong>Movement:</strong> press hands straight out in front of chest, hold 2 seconds, return to chest. The band tries to rotate you toward the door — your job is to RESIST that rotation. Stay completely square. <strong>Why it matters:</strong> trains anti-rotation core. The exact pattern your core uses to keep the backpack from twisting you.</p>
                 </div>
+
                 <div class="metric-card">
+                    <svg class="exercise-demo-svg" viewBox="0 0 220 100" xmlns="http://www.w3.org/2000/svg">
+                        <line x1="10" y1="92" x2="210" y2="92" class="floor"/>
+                        <line x1="50" y1="15" x2="50" y2="92" stroke="#9ca3af" stroke-width="3"/>
+                        <circle cx="60" cy="32" r="6" class="head"/>
+                        <line x1="55" y1="38" x2="55" y2="62" class="body"/>
+                        <line x1="55" y1="62" x2="105" y2="62" class="working"/>
+                        <line x1="105" y1="62" x2="105" y2="92" class="body"/>
+                        <line x1="60" y1="40" x2="80" y2="55" class="body"/>
+                        <line x1="60" y1="40" x2="80" y2="48" class="body"/>
+                        <path d="M 95 56 Q 105 60 115 56" class="band"/>
+                        <text x="120" y="50" font-size="9" fill="#10b981" font-weight="600">90°</text>
+                        <text x="120" y="62" font-size="9" fill="#10b981" font-weight="600">QUADS</text>
+                        <text x="120" y="74" font-size="9" fill="#10b981" font-weight="600">BURN</text>
+                    </svg>
                     <h4 style="margin-top: 0;">7. Wall sit · 2 × 60 seconds</h4>
-                    <p style="margin-top: 6px;">Add booty band around knees, push knees out. Quad endurance for downhills.</p>
+                    <p style="margin-top: 6px;"><strong>Setup:</strong> back flat against wall, slide down until knees are at 90° (thighs parallel to floor). Add booty band around knees and push outward against it. <strong>Movement:</strong> hold. Don't let knees cave in. Don't slide higher up the wall as it gets hard. <strong>Why it matters:</strong> trains quad endurance for the long descents on the Camino (downhills are harder on quads than uphills).</p>
                 </div>
             </div>
 
@@ -2690,8 +2999,27 @@ WRONG — BUTT HIGH:
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
+        function setTodaysWorkout() {
+            const day = new Date().getDay();
+            const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+            const workouts = {
+                0: { title: 'Rest Day', desc: "Recovery is when adaptation happens. If you want, take a 30-min easy walk, no backpack." },
+                1: { title: 'Strength A · Hill Power', desc: 'Goblet squats, Bulgarian split squats, step-ups, single-leg calf raises, plank. 35 min. Tap for SVG demos and form cues.' },
+                2: { title: 'Loaded Walk · Brisk', desc: 'Quick-paced walk with backpack. See Camino tab for this week\'s duration and pack weight.' },
+                3: { title: 'Strength B · Posterior Chain', desc: 'Romanian deadlifts, hip thrusts, single-leg RDL, side plank, bird dogs, dead bugs. 35 min.' },
+                4: { title: 'Mobility + Balance', desc: 'Balance board work, calf endurance, hip mobility. 20 min light recovery.' },
+                5: { title: 'Strength C · Endurance & Single-Leg', desc: 'Reverse lunges, walking lunges, step-ups, balance board calf raises, Pallof press, wall sit. 35 min.' },
+                6: { title: 'LONG Loaded Walk', desc: 'The most important session of the week. Find hills. See Camino tab for this week\'s duration.' }
+            };
+            const w = workouts[day];
+            document.getElementById('todaysDayLabel').textContent = dayNames[day] + ' · Today';
+            document.getElementById('todaysWorkoutTitle').textContent = w.title;
+            document.getElementById('todaysWorkoutDesc').textContent = w.desc;
+        }
+
         document.addEventListener('DOMContentLoaded', function() {
             updateTodayDisplay();
+            setTodaysWorkout();
             renderPreviousWeek();
             renderCurrentWeek();
             renderProgressCounters();
