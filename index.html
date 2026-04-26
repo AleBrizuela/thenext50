@@ -753,6 +753,9 @@
                 <button class="nav-btn" onclick="showSection('workout')">
                     <span class="nav-icon">🤍</span> Workout
                 </button>
+                <button class="nav-btn" onclick="showSection('camino')">
+                    <span class="nav-icon">🥾</span> Camino
+                </button>
                 <button class="nav-btn" onclick="showSection('form')">
                     <span class="nav-icon">📖</span> Form
                 </button>
@@ -777,6 +780,12 @@
                     <h2>Countdown to My 50th Birthday</h2>
                     <p class="countdown-date">December 28, 2026</p>
                     <p style="margin-top: 12px; font-size: 14px; opacity: 0.88; color: white;">Building the foundation for the next 50 years</p>
+                </div>
+
+                <div class="countdown-card" style="margin-top: 14px; cursor: pointer;" onclick="showSection('camino')">
+                    <h2>Camino Francés · Departure</h2>
+                    <p class="countdown-date" style="font-size: 32px;">June 14, 2026</p>
+                    <p style="margin-top: 12px; font-size: 14px; opacity: 0.88; color: white;">7-week training plan in progress · tap to view</p>
                 </div>
             </div>
 
@@ -1487,6 +1496,353 @@
                     <h4 style="margin-top: 0;">Week 16 = Scan Time (Apr 20-26, 2026)</h4>
                     <p>Schedule your DEXA scan for end of April 2026. Take progress photos. Review how clothes fit. Celebrate consistency regardless of numbers.</p>
                 </div>
+            </div>
+        </div>
+
+        <!-- CAMINO -->
+        <div id="camino" class="section">
+            <button class="back-to-home" onclick="showSection('home')">← Back to Home</button>
+
+            <div class="card hero-card">
+                <h1 style="font-size: 42px;">Camino Prep</h1>
+                <p class="subtitle">7 weeks to St-Jean-Pied-de-Port · Camino Francés</p>
+                <div class="countdown-card">
+                    <h2>Departure</h2>
+                    <p class="countdown-date">June 14, 2026</p>
+                    <p style="margin-top: 12px; font-size: 14px; opacity: 0.88; color: white;">First day crosses the Pyrenees · the most demanding day of the entire route</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>Why this plan works for both goals</h2>
+                <p style="margin-bottom: 18px;">My Scan #2 said legs are my biggest opportunity. The Camino requires legs. These two goals don't compete, they reinforce each other. Every loaded walk and every squat does double duty.</p>
+
+                <div class="info-section success">
+                    <h4 style="margin-top: 0; color: #047857;">The five demands of the Camino Francés</h4>
+                    <ul style="margin-top: 10px;">
+                        <li><strong>Walking endurance</strong> — 15 to 25 km per day, every day, for 30+ days</li>
+                        <li><strong>Loaded carrying</strong> — 15 to 20 lb backpack on my back the whole time</li>
+                        <li><strong>Hill resilience</strong> — uphill power and downhill control (knees, ankles)</li>
+                        <li><strong>Foot, ankle, knee tolerance</strong> — repetitive impact, mostly trails and road</li>
+                        <li><strong>Recovery between days</strong> — wake up Day 5 and walk again, fresh-ish</li>
+                    </ul>
+                </div>
+
+                <div class="info-section warning">
+                    <h4 style="margin-top: 0;">Ankle hardware caveat</h4>
+                    <p style="margin-top: 8px;">No running, no plyometrics, no jump rope jumping. Walking and hiking are fine, that's literally what the Camino is. The 1 lb weighted jump rope is for shoulder warm-up swings only, not jumping.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>Weekly schedule template</h2>
+                <p style="margin-bottom: 18px;">Early AM, before kids wake. Strength sessions are 30 to 35 min. Walks are progressive (see week-by-week below).</p>
+
+                <table>
+                    <tr>
+                        <th>Day</th>
+                        <th>Session</th>
+                        <th>Duration</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Monday</strong></td>
+                        <td>Strength A — Hill Power</td>
+                        <td>35 min</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Tuesday</strong></td>
+                        <td>Loaded walk — Short & Brisk</td>
+                        <td>45 min</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Wednesday</strong></td>
+                        <td>Strength B — Posterior Chain & Hip Stability</td>
+                        <td>35 min</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Thursday</strong></td>
+                        <td>Mobility + Balance + Calves</td>
+                        <td>20 min</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Friday</strong></td>
+                        <td>Strength C — Endurance & Single-Leg</td>
+                        <td>35 min</td>
+                    </tr>
+                    <tr style="background: #f0fdf4;">
+                        <td><strong>Saturday</strong></td>
+                        <td>Loaded walk — LONG (the key session)</td>
+                        <td>60 min → 4 hrs</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Sunday</strong></td>
+                        <td>Rest or 30 min easy walk (no backpack)</td>
+                        <td>—</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="card">
+                <h2>Strength A · Hill Power</h2>
+                <p style="color: #86868b; font-size: 14px; margin-bottom: 16px;">Monday · 35 min · build the legs that climb the Pyrenees</p>
+
+                <div class="metric-card">
+                    <h4 style="margin-top: 0;">1. Booty band warm-up · 2 min</h4>
+                    <p style="margin-top: 6px;">Lateral walks (15 each side), monster walks (15 each side), bodyweight glute bridges (15 reps).</p>
+                </div>
+                <div class="metric-card">
+                    <h4 style="margin-top: 0;">2. Goblet squat · 4 sets × 10 reps</h4>
+                    <p style="margin-top: 6px;">One dumbbell at chest. Start at <strong>30 lbs</strong>. Progress to 40+ by Week 5. Knee tracks over 2nd toe. Push through heel.</p>
+                </div>
+                <div class="metric-card">
+                    <h4 style="margin-top: 0;">3. Bulgarian split squat · 3 × 8 each leg, LEFT FIRST</h4>
+                    <p style="margin-top: 6px;">Rear foot on bench, dumbbells at sides. Start at <strong>15 lbs each hand</strong>. Closes the left/right gap from the scan.</p>
+                </div>
+                <div class="metric-card">
+                    <h4 style="margin-top: 0;">4. Dumbbell step-up to bench · 3 × 10 each leg</h4>
+                    <p style="margin-top: 6px;">Drive up through the bench leg. Don't push off the trailing foot. Start at <strong>15 lbs each hand</strong>.</p>
+                </div>
+                <div class="metric-card">
+                    <h4 style="margin-top: 0;">5. Single-leg calf raise · 3 × 15 each side</h4>
+                    <p style="margin-top: 6px;">Holding one dumbbell, hand on wall for balance. Calves are the silent hero of long-distance hiking. Start at <strong>20 lbs</strong>.</p>
+                </div>
+                <div class="metric-card">
+                    <h4 style="margin-top: 0;">6. Plank · 3 × 45 seconds</h4>
+                    <p style="margin-top: 6px;">A strong plank holds the backpack steady on every step.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>Strength B · Posterior Chain & Hip Stability</h2>
+                <p style="color: #86868b; font-size: 14px; margin-bottom: 16px;">Wednesday · 35 min · backpack carry, downhill control, hip stability</p>
+
+                <div class="metric-card">
+                    <h4 style="margin-top: 0;">1. Booty band warm-up · 2 min</h4>
+                    <p style="margin-top: 6px;">Same as Workout A.</p>
+                </div>
+                <div class="metric-card">
+                    <h4 style="margin-top: 0;">2. Romanian deadlift · 4 × 10</h4>
+                    <p style="margin-top: 6px;">Dumbbells at sides, hinge at hips, knees soft. Start at <strong>25 lbs each hand</strong>, progress to 35+. Builds the hamstring/glute/lower-back chain that protects you on downhills.</p>
+                </div>
+                <div class="metric-card">
+                    <h4 style="margin-top: 0;">3. Hip thrust · 4 × 12</h4>
+                    <p style="margin-top: 6px;">Shoulders on bench edge, dumbbell on hips. Start at <strong>30 lbs</strong>, progress aggressively (hips tolerate heavy loads well). Strong glutes = uphill power.</p>
+                </div>
+                <div class="metric-card">
+                    <h4 style="margin-top: 0;">4. Single-leg Romanian deadlift · 3 × 8 each, LEFT FIRST</h4>
+                    <p style="margin-top: 6px;">One dumbbell in opposite hand. Start at <strong>20 lbs</strong>. Single-leg balance under load is exactly what stepping over rocks demands.</p>
+                </div>
+                <div class="metric-card">
+                    <h4 style="margin-top: 0;">5. Side plank with leg lift · 3 × 10 each side</h4>
+                    <p style="margin-top: 6px;">Hits the lateral hip stabilizers (gluteus medius). Weak side hips are the #1 cause of knee pain on long hikes.</p>
+                </div>
+                <div class="metric-card">
+                    <h4 style="margin-top: 0;">6. Bird dog · 3 × 10 each side</h4>
+                    <p style="margin-top: 6px;">Slow, controlled. Anti-rotation core for backpack stability.</p>
+                </div>
+                <div class="metric-card">
+                    <h4 style="margin-top: 0;">7. Dead bug · 3 × 10</h4>
+                    <p style="margin-top: 6px;">Lying on back, opposite arm/leg lower. Deep core, lower back protection.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>Strength C · Endurance & Single-Leg</h2>
+                <p style="color: #86868b; font-size: 14px; margin-bottom: 16px;">Friday · 35 min · the kind of fatigue you'll feel on Day 5 of the Camino</p>
+
+                <div class="metric-card">
+                    <h4 style="margin-top: 0;">1. Booty band warm-up · 2 min</h4>
+                </div>
+                <div class="metric-card">
+                    <h4 style="margin-top: 0;">2. Reverse lunge · 3 × 10 each leg, LEFT FIRST</h4>
+                    <p style="margin-top: 6px;">Dumbbells at sides. Start at <strong>15 lbs each hand</strong>. Reverse (not forward) is gentler on knees.</p>
+                </div>
+                <div class="metric-card">
+                    <h4 style="margin-top: 0;">3. Walking lunge · 3 × 10 each leg</h4>
+                    <p style="margin-top: 6px;">Dumbbells at sides. Mimics the actual gait pattern of hiking.</p>
+                </div>
+                <div class="metric-card">
+                    <h4 style="margin-top: 0;">4. Box step-up endurance set · 3 × 15 each leg</h4>
+                    <p style="margin-top: 6px;">Lighter dumbbells, faster pace. Trains the legs to keep working when fatigued.</p>
+                </div>
+                <div class="metric-card">
+                    <h4 style="margin-top: 0;">5. Calf raise on balance board · 3 × 20</h4>
+                    <p style="margin-top: 6px;">Bodyweight only. Trains ankle stability + calf endurance simultaneously. Critical for ankle hardware protection.</p>
+                </div>
+                <div class="metric-card">
+                    <h4 style="margin-top: 0;">6. Pallof press with band · 3 × 10 each side</h4>
+                    <p style="margin-top: 6px;">Band anchored to door (use the door anchor from the pilates kit). Anti-rotation core under load.</p>
+                </div>
+                <div class="metric-card">
+                    <h4 style="margin-top: 0;">7. Wall sit · 2 × 60 seconds</h4>
+                    <p style="margin-top: 6px;">Add booty band around knees, push knees out. Quad endurance for downhills.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>Loaded walks — the most important sessions</h2>
+                <p style="margin-bottom: 18px;">Strength workouts build the engine. Loaded walks are the actual rehearsal. Build minutes per week, build backpack weight, find hills.</p>
+
+                <div class="info-section highlight">
+                    <h4 style="margin-top: 0;">Saturday is sacred</h4>
+                    <p style="margin-top: 8px;">The Saturday long walk is the single most important session of the week. Don't skip it. If you can only do one thing each week, do this.</p>
+                </div>
+
+                <h3>Loaded walk progression</h3>
+                <table>
+                    <tr>
+                        <th>Week</th>
+                        <th>Tue Walk (Brisk)</th>
+                        <th>Sat Walk (LONG, slow)</th>
+                        <th>Backpack</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Week 1</strong> · Apr 27 - May 3</td>
+                        <td>30 min</td>
+                        <td>60 min</td>
+                        <td>10 lbs</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Week 2</strong> · May 4 - 10</td>
+                        <td>40 min</td>
+                        <td>90 min</td>
+                        <td>10 lbs</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Week 3</strong> · May 11 - 17</td>
+                        <td>45 min</td>
+                        <td>2 hrs</td>
+                        <td>12 lbs</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Week 4</strong> · May 18 - 24</td>
+                        <td>45 min</td>
+                        <td>2.5 hrs (find hills)</td>
+                        <td>15 lbs</td>
+                    </tr>
+                    <tr style="background: #fffbeb;">
+                        <td><strong>Week 5</strong> · May 25 - 31</td>
+                        <td>50 min</td>
+                        <td>3 hrs + 90 min Sun (back-to-back)</td>
+                        <td>17 lbs</td>
+                    </tr>
+                    <tr style="background: #fffbeb;">
+                        <td><strong>Week 6</strong> · Jun 1 - 7 (PEAK)</td>
+                        <td>50 min</td>
+                        <td>3.5-4 hrs + 2 hrs Sun</td>
+                        <td>18-20 lbs</td>
+                    </tr>
+                    <tr style="background: #f0fdf4;">
+                        <td><strong>Week 7</strong> · Jun 8 - 13 (TAPER)</td>
+                        <td>30 min</td>
+                        <td>90 min easy</td>
+                        <td>10 lbs</td>
+                    </tr>
+                </table>
+
+                <p style="margin-top: 18px;"><strong>Where to walk in Culver City:</strong> Kenneth Hahn Park has trails and hills. Baldwin Hills Scenic Overlook for stairs and incline. Ballona Creek Trail for flat distance. The hills sessions matter most for Week 4 onward.</p>
+            </div>
+
+            <div class="card">
+                <h2>7-Week Timeline</h2>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">Week 1 · Apr 27 - May 3</div>
+                    <div class="timeline-content">
+                        <strong>Foundation</strong><br>
+                        Get the rhythm. All 3 strength workouts at starter weights. 60 min Saturday walk with 10 lb pack. Break in your hiking shoes (target: 50 miles in them before June 14).
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">Week 2 · May 4 - 10</div>
+                    <div class="timeline-content">
+                        <strong>Build base volume</strong><br>
+                        Same workouts. Add 5 lbs to one main lift if last week's top set felt easy. 90 min Saturday walk.
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">Week 3 · May 11 - 17</div>
+                    <div class="timeline-content">
+                        <strong>Intro hills + heavier pack</strong><br>
+                        Find a route with hills for Saturday. Bump pack to 12 lbs. 2 hr walk. Test merino socks and blister prep on this walk.
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">Week 4 · May 18 - 24</div>
+                    <div class="timeline-content">
+                        <strong>Hill specificity</strong><br>
+                        Saturday walk = 2.5 hrs with hills, 15 lb pack. This week's walk should approximate a real Camino day.
+                    </div>
+                </div>
+
+                <div class="timeline-item current">
+                    <div class="timeline-date">Week 5 · May 25 - 31</div>
+                    <div class="timeline-content">
+                        <strong>Back-to-back days begin</strong><br>
+                        Saturday 3 hrs + Sunday 90 min. Same pack. This simulates the recovery demand of Camino. If your legs feel destroyed Sunday morning, that's the point.
+                    </div>
+                </div>
+
+                <div class="timeline-item current">
+                    <div class="timeline-date">Week 6 · Jun 1 - 7 (PEAK)</div>
+                    <div class="timeline-content">
+                        <strong>Peak week</strong><br>
+                        Saturday 3.5-4 hrs with hills, 18-20 lb pack. Sunday 2 hrs. This is your dress rehearsal. After this, taper.
+                    </div>
+                </div>
+
+                <div class="timeline-item birthday">
+                    <div class="timeline-date">Week 7 · Jun 8 - 13 (TAPER)</div>
+                    <div class="timeline-content">
+                        <strong>Taper to fresh</strong><br>
+                        Cut walking volume in half. Keep one strength session early in the week. Last 2-3 days = rest, hydrate, pack. Trust the work, do not cram.
+                    </div>
+                </div>
+
+                <div class="timeline-item birthday">
+                    <div class="timeline-date">June 14, 2026</div>
+                    <div class="timeline-content">
+                        <strong>Day 1 — Pyrenees</strong><br>
+                        St-Jean-Pied-de-Port to Roncesvalles. The hardest day of the whole Camino. You'll be ready.
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>Pre-departure non-negotiables</h2>
+
+                <div class="info-section">
+                    <h4 style="margin-top: 0;">Shoes</h4>
+                    <p style="margin-top: 6px;">Wear your Camino shoes for at least 50 miles before June 14. Break them in on the Saturday walks. Blisters from new shoes destroy more Caminos than terrain.</p>
+                </div>
+
+                <div class="info-section">
+                    <h4 style="margin-top: 0;">Pack</h4>
+                    <p style="margin-top: 6px;">Train with your actual Camino backpack, weighted to your real travel weight. Adjust the hip belt to carry weight on hips, not shoulders.</p>
+                </div>
+
+                <div class="info-section">
+                    <h4 style="margin-top: 0;">Socks and feet</h4>
+                    <p style="margin-top: 6px;">Test merino wool socks on every Saturday walk. Trial blister prep (Body Glide, leukotape on hot spots, sock liners). Find what works before you're 200 miles in.</p>
+                </div>
+
+                <div class="info-section">
+                    <h4 style="margin-top: 0;">Fueling and hydration</h4>
+                    <p style="margin-top: 6px;">Practice eating during walks. Salt + simple carbs + water every hour past 90 min. Test what your stomach tolerates moving.</p>
+                </div>
+
+                <div class="info-section">
+                    <h4 style="margin-top: 0;">Trekking poles</h4>
+                    <p style="margin-top: 6px;">Strongly recommended given your ankle hardware. They reduce knee/ankle load by up to 25% on descents. Practice with them on Saturday walks.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>How this connects to Scan #3</h2>
+                <p>The Camino itself will move both leg fat and overall body fat downward. You'll walk roughly 500 miles in 30 to 35 days carrying weight. Expect Scan #3 (late July) to show meaningful gains in leg lean mass, drop in leg fat, and improvement in cardiovascular markers. Coming home from the Camino is the perfect launch into the final push toward 50.</p>
             </div>
         </div>
 
